@@ -1,7 +1,9 @@
+import { GlobalStyles } from './assets';
+
 function App() {
   return (
     <>
-      Snappy Chat
+      <GlobalStyles />
     </>
   )
 }
