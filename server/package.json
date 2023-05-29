@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Snappy Chat API with Node, Express, MongoDB, Mongoose and Socket.IO",
+  "main": "./src/app.ts",
+  "scripts": {
+    "dev": "nodemon ./src/app.ts",
+    "start": "node ./dist/app.js"
+  },
+  "keywords": [
+    "Node",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "Socket.IO"
+  ],
+  "author": "justtfelix",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
