@@ -30,10 +30,11 @@ function Register() {
 
     response
       .then((result) => {
-        const { username } = result.data.user;
-        toast.success(`Congratulations ${username}! Your registration has been successful`);
+        const { user } = result.data;
+        toast.success(`Congratulations ${user.username}! Your registration has been successful`);
         setButtonText('creating user...');
         setDisabled(true);
+        localStorage.setItem('snappy-chat-user', JSON.stringify(user));
         const timerId = setTimeout(() => {
           navigate('/');
         }, 3000);
