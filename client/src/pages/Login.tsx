@@ -1,20 +1,28 @@
+import { useForm } from 'react-hook-form';
+import { ILoginFormFields } from '../interfaces';
 import { AuthContainer, AuthForm, AuthInput, AuthButton } from '../components';
 import { Brand, AccountQuestion, ToastNote } from '../layouts';
 
 function Login() {
+  const { register, handleSubmit } = useForm<ILoginFormFields>();
+
+  const onSubmit = handleSubmit((data) => {
+    console.log(data);
+  });
+
   return (
     <AuthContainer>
       <Brand />
-      <AuthForm>
+      <AuthForm onSubmit={onSubmit}>
         <AuthInput
           type='text'
-          name='username'
+          {...register('username')}
           id='username'
           placeholder='Username'
         />
         <AuthInput
           type='password'
-          name='password'
+          {...register('password')}
           id='password'
           placeholder='Password'
         />
