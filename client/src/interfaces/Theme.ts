@@ -6,6 +6,7 @@ export interface ITheme {
 interface IColors {
   white: string;
   black: string;
+  eerieBlack: string;
 }
 
 interface IFonts {
