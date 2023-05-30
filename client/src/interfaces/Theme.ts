@@ -1,6 +1,7 @@
 export interface ITheme {
   colors: IColors;
   fonts: IFonts;
+  transition: string;
 }
 
 interface IColors {
@@ -8,6 +9,8 @@ interface IColors {
   black: string;
   eerieBlack: string;
   strongBlack: string;
+  hanPurple: string;
+  mediumPurple: string;
 }
 
 interface IFonts {
