@@ -1,6 +1,11 @@
+import { AuthContainer } from '../components';
+import { Brand } from '../layouts';
+
 function Register() {
   return (
-    <div>Register</div>
+    <AuthContainer>
+      <Brand />
+    </AuthContainer>
   )
 }
 
