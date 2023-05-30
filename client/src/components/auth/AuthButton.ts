@@ -16,9 +16,18 @@ const AuthButton = styled.button`
   cursor: pointer;
   outline: none;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 15px;
   
   &:hover {
     background-color: ${({ theme }) => theme.colors.mediumPurple};
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.mediumPurple};
+    cursor: not-allowed;
   }
 `;
 

@@ -1,17 +1,25 @@
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { IRegisterFormFields } from '../interfaces';
 import { 
   usernameValidation, emailValidation, passwordValidation, confirmPassValidation,
   usernameValidate, emailValidate, passwordValidate, confirmPassValidate
 } from "../validations";
-import { AuthContainer, AuthForm, AuthInput, AuthButton } from '../components';
+import { AuthContainer, AuthForm, AuthInput, AuthButton, Loader } from '../components';
 import { Brand, ToastNote } from '../layouts';
 
 function Register() {
   const { register, handleSubmit, getValues, formState: { errors } } = useForm<IRegisterFormFields>();
+  const [buttonText, setButtonText] = useState<string>('register');
+  const [disabled, setDisabled] = useState<boolean>(false);
 
   const onSubmit = handleSubmit((data) => {
+    const { username, email, password } = data;
     console.log(data);
+    toast.success(`Congratulations ${username}! Your registration has been successful`);
+    setButtonText('creating user...');
+    setDisabled(true);
   });
 
   const handleValidation = () => {
@@ -54,7 +62,12 @@ function Register() {
           id='confirmPassword'
           placeholder='Confirm Password'
         />
-        <AuthButton onClick={handleValidation}>register</AuthButton>
+        <AuthButton 
+          disabled={disabled}
+          onClick={handleValidation}
+        >
+          {buttonText} {disabled && <Loader />}
+        </AuthButton>
       </AuthForm>
       <ToastNote />
     </AuthContainer>
