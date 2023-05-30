@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import { IRegisterFormFields } from '../interfaces';
-import { removeWhiteSpaces } from '../utils';
+import { removeWhiteSpaces, registerRoute } from '../utils';
 import { 
   usernameValidation, emailValidation, passwordValidation, confirmPassValidation,
   usernameValidate, emailValidate, passwordValidate, confirmPassValidate
@@ -22,6 +23,12 @@ function Register() {
     toast.success(`Congratulations ${clearedUsername}! Your registration has been successful`);
     setButtonText('creating user...');
     setDisabled(true);
+
+    const response = axios.post(registerRoute, {
+      username: clearedUsername,
+      email,
+      password,
+    });
   });
 
   const handleValidation = () => {
