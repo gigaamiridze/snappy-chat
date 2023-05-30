@@ -1,15 +1,27 @@
 import { useForm } from 'react-hook-form';
 import { IRegisterFormFields } from '../interfaces';
-import { usernameValidation, emailValidation, passwordValidation, confirmPassValidation } from '../validations';
+import { 
+  usernameValidation, emailValidation, passwordValidation, confirmPassValidation,
+  usernameValidate, emailValidate, passwordValidate, confirmPassValidate
+} from "../validations";
 import { AuthContainer, AuthForm, AuthInput, AuthButton } from '../components';
 import { Brand, ToastNote } from '../layouts';
 
 function Register() {
-  const { register, handleSubmit, getValues } = useForm<IRegisterFormFields>();
+  const { register, handleSubmit, getValues, formState: { errors } } = useForm<IRegisterFormFields>();
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
+
+  const handleValidation = () => {
+    const { username, email, password, confirmPassword } = errors;
+
+    confirmPassValidate(confirmPassword);
+    passwordValidate(password);
+    emailValidate(email);
+    usernameValidate(username);
+  }
 
   return (
     <AuthContainer>
@@ -42,7 +54,7 @@ function Register() {
           id='confirmPassword'
           placeholder='Confirm Password'
         />
-        <AuthButton>register</AuthButton>
+        <AuthButton onClick={handleValidation}>register</AuthButton>
       </AuthForm>
       <ToastNote />
     </AuthContainer>
