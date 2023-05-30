@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { IRegisterFormFields } from '../interfaces';
 import { removeWhiteSpaces, registerRoute } from '../utils';
@@ -15,20 +16,34 @@ function Register() {
   const { register, handleSubmit, getValues, formState: { errors } } = useForm<IRegisterFormFields>();
   const [buttonText, setButtonText] = useState<string>('register');
   const [disabled, setDisabled] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
     const { username, email, password } = data;
-    console.log(data);
     const clearedUsername = removeWhiteSpaces(username);
-    toast.success(`Congratulations ${clearedUsername}! Your registration has been successful`);
-    setButtonText('creating user...');
-    setDisabled(true);
-
+  
     const response = axios.post(registerRoute, {
       username: clearedUsername,
       email,
       password,
     });
+
+    response
+      .then((result) => {
+        const { username } = result.data.user;
+        toast.success(`Congratulations ${username}! Your registration has been successful`);
+        setButtonText('creating user...');
+        setDisabled(true);
+        const timerId = setTimeout(() => {
+          navigate('/');
+        }, 3000);
+
+        return () => clearTimeout(timerId);
+      })
+      .catch((error) => {
+        const { message } = error.response.data;
+        toast.error(message);
+      });
   });
 
   const handleValidation = () => {
