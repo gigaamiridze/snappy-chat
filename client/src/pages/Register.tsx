@@ -1,4 +1,4 @@
-import { AuthContainer, AuthForm, AuthInput } from '../components';
+import { AuthContainer, AuthForm, AuthInput, AuthButton } from '../components';
 import { Brand } from '../layouts';
 
 function Register() {
@@ -30,6 +30,7 @@ function Register() {
           id='confirmPassword'
           placeholder='Confirm Password'
         />
+        <AuthButton>register</AuthButton>
       </AuthForm>
     </AuthContainer>
   )
