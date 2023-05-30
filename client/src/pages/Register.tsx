@@ -10,7 +10,7 @@ import {
   usernameValidate, emailValidate, passwordValidate, confirmPassValidate
 } from "../validations";
 import { AuthContainer, AuthForm, AuthInput, AuthButton, Loader } from '../components';
-import { Brand, ToastNote } from '../layouts';
+import { Brand, AccountQuestion, ToastNote } from '../layouts';
 
 function Register() {
   const { register, handleSubmit, getValues, formState: { errors } } = useForm<IRegisterFormFields>();
@@ -94,6 +94,7 @@ function Register() {
           {buttonText} {disabled && <Loader />}
         </AuthButton>
       </AuthForm>
+      <AccountQuestion question='already have an account?' address='login' />
       <ToastNote />
     </AuthContainer>
   )

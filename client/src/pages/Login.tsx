@@ -1,5 +1,5 @@
 import { AuthContainer, AuthForm, AuthInput, AuthButton } from '../components';
-import { Brand, ToastNote } from '../layouts';
+import { Brand, AccountQuestion, ToastNote } from '../layouts';
 
 function Login() {
   return (
@@ -20,6 +20,7 @@ function Login() {
         />
         <AuthButton>login</AuthButton>
       </AuthForm>
+      <AccountQuestion question="don't have an account?" address="register" />
       <ToastNote />
     </AuthContainer>
   )
