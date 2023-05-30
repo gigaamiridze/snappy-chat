@@ -51,8 +51,22 @@ const GlobalStyles = createGlobalStyle`
       background-color: ${theme.colors.eerieBlack};
       font-family: ${theme.fonts.primary};
     `}
-    width: 100vw;
+    width: 100%;
     height: 100vh;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background-color: ${({ theme }) => theme.colors.eerieBlack};
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.colors.hanPurple};
+      border: 3px solid;
+      border-radius: 10px;
+    }
   }
 
   #root {
