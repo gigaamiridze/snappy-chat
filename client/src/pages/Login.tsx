@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import { ILoginFormFields } from '../interfaces';
+import { removeWhiteSpaces, loginRoute } from '../utils';
 import { loginUsernameValidation, loginUsernameValidate, loginPassValidation, loginPassValidate } from '../validations';
 import { AuthContainer, AuthForm, AuthInput, AuthButton } from '../components';
 import { Brand, AccountQuestion, ToastNote } from '../layouts';
@@ -8,7 +10,13 @@ function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm<ILoginFormFields>();
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
+    const { username, password } = data;
+    const clearedUsername = removeWhiteSpaces(username);
+
+    const response = axios.post(loginRoute, {
+      username: clearedUsername,
+      password,
+    });
   });
 
   const handleValidation = () => {
