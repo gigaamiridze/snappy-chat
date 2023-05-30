@@ -1,0 +1,1 @@
+export { default as SnappyLogo } from './logo.svg';
