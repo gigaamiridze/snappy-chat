@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { IRegisterFormFields } from '../interfaces';
+import { removeWhiteSpaces } from '../utils';
 import { 
   usernameValidation, emailValidation, passwordValidation, confirmPassValidation,
   usernameValidate, emailValidate, passwordValidate, confirmPassValidate
@@ -17,7 +18,8 @@ function Register() {
   const onSubmit = handleSubmit((data) => {
     const { username, email, password } = data;
     console.log(data);
-    toast.success(`Congratulations ${username}! Your registration has been successful`);
+    const clearedUsername = removeWhiteSpaces(username);
+    toast.success(`Congratulations ${clearedUsername}! Your registration has been successful`);
     setButtonText('creating user...');
     setDisabled(true);
   });
