@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,12 @@ function Login() {
   const [buttonText, setButtonText] = useState<string>('register');
   const [disabled, setDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem('snappy-chat-user')) {
+      navigate('/');
+    }
+  }, []);
 
   const onSubmit = handleSubmit((data) => {
     const { username, password } = data;
