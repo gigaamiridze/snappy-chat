@@ -1,13 +1,12 @@
 import styled, { css } from 'styled-components';
 
-const AuthButton = styled.button`
+const Button = styled.button`
   ${({ theme }) => css`
     background-color: ${theme.colors.hanPurple};
     color: ${theme.colors.white};
     font-family: ${theme.fonts.primary};
     transition: ${theme.transition};
   `}
-  width: 100%;
   height: 50px;
   font-size: 16px;
   font-weight: 700;
@@ -31,4 +30,10 @@ const AuthButton = styled.button`
   }
 `;
 
-export default AuthButton;
+export const AuthButton = styled(Button)`
+  width: 100%;
+`;
+
+export const AvatarButton = styled(Button)`
+  width: 270px;
+`;

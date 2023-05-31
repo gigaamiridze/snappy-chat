@@ -1,6 +1,11 @@
+import { SetAvatarContainer, PickAvatarTitle, AvatarButton } from '../components';
+
 function SetAvatar() {
   return (
-    <div>Set Avatar</div>
+    <SetAvatarContainer>
+      <PickAvatarTitle>Pick an avatar as your profile picture</PickAvatarTitle>
+      <AvatarButton>set as profile picture</AvatarButton>
+    </SetAvatarContainer>
   )
 }
 
