@@ -1,13 +1,19 @@
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ILoginFormFields } from '../interfaces';
 import { removeWhiteSpaces, loginRoute } from '../utils';
 import { loginUsernameValidation, loginUsernameValidate, loginPassValidation, loginPassValidate } from '../validations';
-import { AuthContainer, AuthForm, AuthInput, AuthButton } from '../components';
+import { AuthContainer, AuthForm, AuthInput, AuthButton, Loader } from '../components';
 import { Brand, AccountQuestion, ToastNote } from '../layouts';
 
 function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm<ILoginFormFields>();
+  const [buttonText, setButtonText] = useState<string>('register');
+  const [disabled, setDisabled] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
     const { username, password } = data;
@@ -17,6 +23,24 @@ function Login() {
       username: clearedUsername,
       password,
     });
+
+    response
+      .then((result) => {
+        const { user } = result.data;
+        toast.success(`Congratulations ${user.username}, you're now logged in!`);
+        setButtonText('logging in...');
+        setDisabled(true);
+        localStorage.setItem('snappy-chat-user', JSON.stringify(user));
+        const timerId = setTimeout(() => {
+          navigate('/');
+        }, 3000);
+
+        return () => clearTimeout(timerId);
+      })
+      .catch((error) => {
+        const { message } = error.response.data;
+        toast.error(message);
+      });
   });
 
   const handleValidation = () => {
@@ -42,7 +66,12 @@ function Login() {
           id='password'
           placeholder='Password'
         />
-        <AuthButton onClick={handleValidation}>login</AuthButton>
+        <AuthButton 
+          disabled={disabled}
+          onClick={handleValidation}
+        >
+          {buttonText} {disabled && <Loader />}
+        </AuthButton>
       </AuthForm>
       <AccountQuestion question="don't have an account?" address="register" />
       <ToastNote />
