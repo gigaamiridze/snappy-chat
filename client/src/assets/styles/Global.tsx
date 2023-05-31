@@ -63,8 +63,10 @@ const GlobalStyles = createGlobalStyle`
     }
     
     &::-webkit-scrollbar-thumb {
-      background-color: ${({ theme }) => theme.colors.hanPurple};
-      border: 3px solid;
+      ${({ theme }) => css`
+        background-color: ${theme.colors.hanPurple};
+        border: 3px solid ${theme.colors.eerieBlack};
+      `}
       border-radius: 10px;
     }
   }
