@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { Buffer } from 'buffer';
 import axios from 'axios';
+import { Loader } from '../assets';
 import { getRandomNumber } from '../utils';
 import { SetAvatarContainer, PickAvatarTitle, Avatars, AvatarWrapper, AvatarImg, AvatarButton } from '../components';
 
@@ -40,24 +41,30 @@ function SetAvatar() {
   }, []);
 
   return (
-    <SetAvatarContainer>
-      <PickAvatarTitle>Pick an avatar as your profile picture</PickAvatarTitle>
-      <Avatars>
-        {avatars.slice(0, 4).map((avatar, index) => (
-          <AvatarWrapper
-            key={index}
-            isSelectedAvatar={selectedAvatar === index ? true : false}
-          >
-            <AvatarImg
-              src={`data:image/svg+xml;base64,${avatar}`}
-              alt={`Avatar ${index}`}
-              onClick={() => setSelectedAvatar(index)}
-            />
-          </AvatarWrapper>
-        ))}
-      </Avatars>
-      <AvatarButton onClick={setProfilePicture}>set as profile picture</AvatarButton>
-    </SetAvatarContainer>
+    <>
+      {isLoading ? (
+        <img src={Loader} alt='loader' />
+      ) : (
+        <SetAvatarContainer>
+          <PickAvatarTitle>Pick an avatar as your profile picture</PickAvatarTitle>
+          <Avatars>
+            {avatars.slice(0, 4).map((avatar, index) => (
+              <AvatarWrapper
+                key={index}
+                isSelectedAvatar={selectedAvatar === index ? true : false}
+              >
+                <AvatarImg
+                  src={`data:image/svg+xml;base64,${avatar}`}
+                  alt={`Avatar ${index}`}
+                  onClick={() => setSelectedAvatar(index)}
+                />
+              </AvatarWrapper>
+            ))}
+          </Avatars>
+          <AvatarButton onClick={setProfilePicture}>set as profile picture</AvatarButton>
+        </SetAvatarContainer>
+      )}
+    </>
   )
 }
 
