@@ -42,7 +42,7 @@ function Register() {
         setDisabled(true);
         localStorage.setItem('snappy-chat-user', JSON.stringify(user));
         const timerId = setTimeout(() => {
-          navigate('/');
+          navigate('/set-avatar');
         }, 3000);
 
         return () => clearTimeout(timerId);

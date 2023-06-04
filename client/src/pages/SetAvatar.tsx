@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import { Buffer } from 'buffer';
 import axios from 'axios';
 import { Loader } from '../assets';
-import { getRandomNumber } from '../utils';
+import { IUser } from '../interfaces';
+import { avatarRoute, getRandomNumber } from '../utils';
 import { SetAvatarContainer, PickAvatarTitle, Avatars, AvatarWrapper, AvatarImg, AvatarButton } from '../components';
 
 function SetAvatar() {
   const [avatars, setAvatars] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedAvatar, setSelectedAvatar] = useState<number | undefined>(undefined);
-
+  const navigate = useNavigate();
+  
   const API_URL = 'https://api.multiavatar.com';
   const API_KEY = 'nCBNYrwJEdlxaA';
 
@@ -30,9 +33,26 @@ function SetAvatar() {
     }
   }
 
-  const setProfilePicture = () => {
+  const setProfilePicture = async () => {
     if (selectedAvatar === undefined) {
       toast.error('Please select an avatar');
+    } else {
+      const userInfo = localStorage.getItem('snappy-chat-user');
+      if (userInfo !== null) {
+        const user: IUser = await JSON.parse(userInfo);
+        const { data } = await axios.post(`${avatarRoute}/${user.id}`, {
+          image: avatars[selectedAvatar],
+        });
+        
+        if (data.isSet) {
+          user.isAvatarImageSet = true;
+          user.avatarImage = data.image;
+          localStorage.setItem('snappy-chat-user', JSON.stringify(user));
+          navigate('/');
+        } else {
+          toast.error('Error setting avatar. Please try again');
+        }
+      }
     }
   }
 
