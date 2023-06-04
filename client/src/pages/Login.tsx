@@ -7,7 +7,7 @@ import { ILoginFormFields } from '../interfaces';
 import { removeWhiteSpaces, loginRoute } from '../utils';
 import { loginUsernameValidation, loginUsernameValidate, loginPassValidation, loginPassValidate } from '../validations';
 import { AuthContainer, AuthForm, AuthInput, AuthButton, Loader } from '../components';
-import { Brand, AccountQuestion, ToastNote } from '../layouts';
+import { Brand, AccountQuestion } from '../layouts';
 
 function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm<ILoginFormFields>();
@@ -80,7 +80,6 @@ function Login() {
         </AuthButton>
       </AuthForm>
       <AccountQuestion question="don't have an account?" address="register" />
-      <ToastNote />
     </AuthContainer>
   )
 }
