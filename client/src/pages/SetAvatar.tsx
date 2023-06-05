@@ -13,6 +13,13 @@ function SetAvatar() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedAvatar, setSelectedAvatar] = useState<number | undefined>(undefined);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!localStorage.getItem('snappy-chat-user')) {
+      navigate('/login');
+    }
+    getAvatars();
+  }, []);
   
   const API_URL = 'https://api.multiavatar.com';
   const API_KEY = 'nCBNYrwJEdlxaA';
@@ -38,7 +45,7 @@ function SetAvatar() {
       toast.error('Please select an avatar');
     } else {
       const userInfo = localStorage.getItem('snappy-chat-user');
-      if (userInfo !== null) {
+      if (userInfo) {
         const user: IUser = await JSON.parse(userInfo);
         const { data } = await axios.post(`${avatarRoute}/${user.id}`, {
           image: avatars[selectedAvatar],
@@ -55,10 +62,6 @@ function SetAvatar() {
       }
     }
   }
-
-  useEffect(() => {
-    getAvatars();
-  }, []);
 
   return (
     <>
