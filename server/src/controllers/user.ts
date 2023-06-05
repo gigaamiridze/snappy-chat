@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcrypt';
 import { User } from '../models';
+import { IUserData } from '../interfaces';
 
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -57,6 +58,26 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     }
 
     return res.status(200).json({ status: 'success', user });
+  } catch (error) {
+    next(error);
+  }
+}
+
+export const setAvatar = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const userId = req.params.id;
+    const avatarImage = req.body.image;
+    const userData: IUserData | null = await User.findByIdAndUpdate(userId, {
+      isAvatarImageSet: true,
+      avatarImage,
+    });
+
+    res.status(200).json({
+      status: 'success',
+      message: 'Username data was updated successfully',
+      isSet: userData?.isAvatarImageSet,
+      image: userData?.avatarImage,
+    });
   } catch (error) {
     next(error);
   }
