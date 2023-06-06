@@ -4,6 +4,7 @@ export const theme = {
     black: '#000000',
     eerieBlack: '#131324',
     strongBlack: '#00000076',
+    shadowBlack: '#00000059',
     hanPurple: '#4e0eff',
     mediumPurple: '#997af0',
   },

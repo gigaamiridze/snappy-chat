@@ -9,6 +9,7 @@ interface IColors {
   black: string;
   eerieBlack: string;
   strongBlack: string;
+  shadowBlack: string;
   hanPurple: string;
   mediumPurple: string;
 }
