@@ -67,11 +67,12 @@ export const setAvatar = async (req: Request, res: Response, next: NextFunction)
   try {
     const userId = req.params.id;
     const avatarImage = req.body.image;
-    const userData: IUserData | null = await User.findByIdAndUpdate(userId, {
+    await User.findByIdAndUpdate(userId, {
       isAvatarImageSet: true,
       avatarImage,
     });
-
+    const userData: IUserData | null = await User.findById(userId);
+  
     res.status(200).json({
       status: 'success',
       message: 'Username data was updated successfully',
