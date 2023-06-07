@@ -64,7 +64,7 @@ function Register() {
 
   return (
     <AuthContainer>
-      <Brand />
+      <Brand isAuthContent={true} />
       <AuthForm onSubmit={onSubmit}>
         <AuthInput
           type='text'

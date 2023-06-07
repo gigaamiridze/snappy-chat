@@ -1,7 +1,4 @@
 export { default as AuthContainer } from './AuthContainer';
-export { default as BrandContent } from './BrandContent';
 export { default as AuthInput } from './AuthInput';
 export { default as AuthForm } from './AuthForm';
-export { default as ChatName } from './ChatName';
 export { default as Question } from './Question';
-export { default as Logo } from './Logo';

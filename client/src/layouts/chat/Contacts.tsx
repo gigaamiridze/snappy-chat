@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ContactProps } from '../../interfaces';
+import { Brand } from '../../layouts';
+import { ContactsContainer } from '../../components';
 
 function Contacts(props: ContactProps) {
   const { contacts, currentUser } = props;
@@ -14,7 +16,9 @@ function Contacts(props: ContactProps) {
   }, [currentUser]);
 
   return (
-    <div>Contacts</div>
+    <ContactsContainer>
+      <Brand isAuthContent={false} />
+    </ContactsContainer>
   )
 }
 
