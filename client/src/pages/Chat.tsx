@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChatContainer } from '../components';
+import axios from 'axios';
+import { usersRoute } from '../utils';
 import { IUser } from '../interfaces';
+import { ChatContainer } from '../components';
 
 function Chat() {
-  const [currentUser, setCurrentUser] = useState<IUser>({} as IUser);
+  const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
+  const [contacts, setContacts] = useState<IUser[]>([]);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -15,6 +18,21 @@ function Chat() {
       setCurrentUser(JSON.parse(userInfo));
     }
   }, []);
+
+  useEffect(() => {
+    if (currentUser) {
+      if (currentUser.isAvatarImageSet) {
+        getAllContacts();
+      } else {
+        navigate('/set-avatar');
+      }
+    }
+  }, [currentUser]);
+
+  const getAllContacts = async () => {
+    const { data } = await axios.get(usersRoute);
+    setContacts(data.users);
+  }
 
   return (
     <ChatContainer>
