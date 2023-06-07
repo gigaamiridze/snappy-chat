@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { usersRoute } from '../utils';
 import { IUser } from '../interfaces';
+import { Contacts } from '../layouts';
 import { ChatContainer } from '../components';
 
 function Chat() {
@@ -36,7 +37,7 @@ function Chat() {
 
   return (
     <ChatContainer>
-      Chat
+      <Contacts contacts={contacts} currentUser={currentUser} />
     </ChatContainer>
   )
 }
