@@ -31,7 +31,7 @@ function Chat() {
   }, [currentUser]);
 
   const getAllContacts = async () => {
-    const { data } = await axios.get(usersRoute);
+    const { data } = await axios.get(`${usersRoute}/${currentUser?.id}`);
     setContacts(data.users);
   }
 
