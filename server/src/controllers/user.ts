@@ -4,7 +4,8 @@ import { User } from '../models';
 
 export const getAllUsers = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const users: IUser[] = await User.find({});
+    const userId = req.params.id;
+    const users: IUser[] = await User.find({ _id : { $ne: userId }});
 
     res.status(200).json({
       status: 'success',
