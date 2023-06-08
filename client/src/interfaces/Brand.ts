@@ -1,3 +1,3 @@
-export interface BrandProps {
+export interface IBrandProps {
   isAuthContent: boolean;
 }

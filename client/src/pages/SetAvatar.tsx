@@ -79,6 +79,7 @@ function SetAvatar() {
                 <AvatarImg
                   src={`data:image/svg+xml;base64,${avatar}`}
                   alt={`Avatar ${index}`}
+                  isChatContent={false}
                   onClick={() => setSelectedAvatar(index)}
                 />
               </AvatarWrapper>

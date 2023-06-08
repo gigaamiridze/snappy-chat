@@ -1,8 +1,8 @@
 import { SnappyLogo } from '../../assets';
-import { BrandProps } from '../../interfaces';
+import { IBrandProps } from '../../interfaces';
 import { BrandContent, Logo, ChatName } from '../../components';
 
-function Brand({ isAuthContent }: BrandProps) {
+function Brand({ isAuthContent }: IBrandProps) {
   return (
     <BrandContent isAuthContent={isAuthContent}>
       <Logo src={SnappyLogo} isAuthContent={isAuthContent} alt='Snappy' />

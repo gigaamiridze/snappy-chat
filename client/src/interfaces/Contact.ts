@@ -1,6 +1,6 @@
 import { IUser } from './User';
 
-export interface ContactProps {
+export interface IContactProps {
   contacts: IUser[];
   currentUser: IUser | undefined;
 }

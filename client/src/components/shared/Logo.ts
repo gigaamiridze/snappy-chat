@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { BrandProps } from '../../interfaces';
+import { IBrandProps } from '../../interfaces';
 
-const Logo = styled.img<BrandProps>`
+const Logo = styled.img<IBrandProps>`
   height: ${({ isAuthContent }) => isAuthContent ? '72px' : '32px'};
 `;
 

@@ -12,6 +12,7 @@ interface IColors {
   shadowBlack: string;
   darkGray: string;
   nightBlue: string;
+  ceanBlue: string;
   hanPurple: string;
   mediumPurple: string;
 }

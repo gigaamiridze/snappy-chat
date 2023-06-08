@@ -1,3 +1,7 @@
-export interface AvatarWrapperProps {
+export interface IAvatarWrapperProps {
   isSelectedAvatar: boolean;
+}
+
+export interface IAvatarImgProps {
+  isChatContent: boolean;
 }

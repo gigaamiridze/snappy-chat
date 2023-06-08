@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { BrandProps } from '../../interfaces';
+import { IBrandProps } from '../../interfaces';
 
-const ChatName = styled.h1<BrandProps>`
+const ChatName = styled.h1<IBrandProps>`
   ${({ isAuthContent, theme }) => css`
     color: ${theme.colors.white};
     font-size: ${isAuthContent ? '30px' : '17px'};

@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Avatar } from '../../assets';
-import { ContactProps } from '../../interfaces';
+import { IContactProps } from '../../interfaces';
 import { Brand } from '../../layouts';
-import { ContactsContainer, ContactsBlock, Contact } from '../../components';
+import { 
+  ContactsContainer, ContactsBlock, Contact, 
+  AvatarImg, CurrentUser, Username 
+} from '../../components';
 
-function Contacts(props: ContactProps) {
+function Contacts(props: IContactProps) {
   const { contacts, currentUser } = props;
   const [currentUserName, setCurrentUserName] = useState<string | undefined>(undefined);
   const [currentUserImage, setCurrentUserImage] = useState<string | undefined>(undefined);
@@ -21,10 +24,21 @@ function Contacts(props: ContactProps) {
       <Brand isAuthContent={false} />
       <ContactsBlock>
         <Contact>
-          <img src={Avatar} alt='Avatar' />
-          <h3>felix</h3>
+          <AvatarImg 
+            src={Avatar} 
+            isChatContent={true} 
+            alt='Avatar' />
+          <Username>felix</Username>
         </Contact>
       </ContactsBlock>
+      <CurrentUser>
+        <AvatarImg 
+          src={Avatar} 
+          isChatContent={true} 
+          alt='Avatar' 
+        />
+        <Username>harvey</Username>
+      </CurrentUser>
     </ContactsContainer>
   )
 }

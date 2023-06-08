@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { BrandProps } from '../../interfaces';
+import { IBrandProps } from '../../interfaces';
 
-const BrandContent = styled.div<BrandProps>`
+const BrandContent = styled.div<IBrandProps>`
   display: flex;
   align-items: center;
   justify-content: center;

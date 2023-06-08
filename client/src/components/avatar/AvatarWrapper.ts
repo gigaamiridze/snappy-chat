@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { AvatarWrapperProps } from '../../interfaces';
+import { IAvatarWrapperProps } from '../../interfaces';
 
-const AvatarWrapper = styled.div<AvatarWrapperProps>`
+const AvatarWrapper = styled.div<IAvatarWrapperProps>`
   ${({ isSelectedAvatar, theme }) => css`
     border: 6px solid ${isSelectedAvatar ? theme.colors.hanPurple : 'transparent'};
     transition: ${theme.transition};
