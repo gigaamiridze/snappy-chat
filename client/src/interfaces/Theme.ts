@@ -10,6 +10,7 @@ interface IColors {
   eerieBlack: string;
   strongBlack: string;
   shadowBlack: string;
+  darkGray: string;
   nightBlue: string;
   hanPurple: string;
   mediumPurple: string;

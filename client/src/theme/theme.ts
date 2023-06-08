@@ -5,6 +5,7 @@ export const theme = {
     eerieBlack: '#131324',
     strongBlack: '#00000076',
     shadowBlack: '#00000059',
+    darkGray: '#ffffff39',
     nightBlue: '#080420',
     hanPurple: '#4e0eff',
     mediumPurple: '#997af0',

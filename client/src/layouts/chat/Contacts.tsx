@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import { Avatar } from '../../assets';
 import { ContactProps } from '../../interfaces';
 import { Brand } from '../../layouts';
-import { ContactsContainer } from '../../components';
+import { ContactsContainer, ContactsBlock, Contact } from '../../components';
 
 function Contacts(props: ContactProps) {
   const { contacts, currentUser } = props;
@@ -18,6 +19,12 @@ function Contacts(props: ContactProps) {
   return (
     <ContactsContainer>
       <Brand isAuthContent={false} />
+      <ContactsBlock>
+        <Contact>
+          <img src={Avatar} alt='Avatar' />
+          <h3>felix</h3>
+        </Contact>
+      </ContactsBlock>
     </ContactsContainer>
   )
 }
