@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
-import { IContactProps } from '../../interfaces';
+import { IContactsProps } from '../../interfaces';
 import { Brand } from '../../layouts';
 import {
   ContactsContainer, ContactsBlock, Contact,
   AvatarImg, CurrentUser, Username
 } from '../../components';
 
-function Contacts(props: IContactProps) {
-  const { contacts, currentUser } = props;
+function Contacts(props: IContactsProps) {
+  const { contacts, currentUser, changeChat } = props;
   const [currentUsername, setCurrentUsername] = useState<string | undefined>(undefined);
   const [currentUserImage, setCurrentUserImage] = useState<string | undefined>(undefined);
+  const [selectedContact, setSelectedContact] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     if (currentUser) {
@@ -17,6 +18,11 @@ function Contacts(props: IContactProps) {
       setCurrentUserImage(currentUser.avatarImage);
     }
   }, [currentUser]);
+
+  const changeCurrentChat = (contact: any, id: string) => {
+    changeChat(contact);
+    setSelectedContact(id);
+  }
 
   return (
     <>
@@ -28,7 +34,11 @@ function Contacts(props: IContactProps) {
               const { id, username, avatarImage } = contact;
 
               return (
-                <Contact key={id}>
+                <Contact 
+                  key={id}
+                  isSelectedContact={selectedContact === id ? true : false}
+                  onClick={() => changeCurrentChat(contact, id)}
+                >
                   <AvatarImg
                     src={`data:image/svg+xml;base64,${avatarImage}`}
                     isChatContent={true}

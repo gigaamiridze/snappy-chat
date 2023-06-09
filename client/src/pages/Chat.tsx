@@ -9,6 +9,7 @@ import { ChatContainer } from '../components';
 function Chat() {
   const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
   const [contacts, setContacts] = useState<IUser[]>([]);
+  const [currentChat, setCurrentChat] = useState<any | undefined>(undefined);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -35,9 +36,17 @@ function Chat() {
     setContacts(data.users);
   }
 
+  const handleChatChange = (chat: any) => {
+    setCurrentChat(chat);
+  }
+
   return (
     <ChatContainer>
-      <Contacts contacts={contacts} currentUser={currentUser} />
+      <Contacts 
+        contacts={contacts} 
+        currentUser={currentUser}
+        changeChat={handleChatChange} 
+      />
     </ChatContainer>
   )
 }

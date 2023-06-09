@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
+import { IContactProps } from '../../interfaces';
 
-const Contact = styled.div`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.darkGray};
+const Contact = styled.div<IContactProps>`
+  ${({ isSelectedContact, theme }) => css`
+    background-color: ${isSelectedContact ? theme.colors.mediumPurple : theme.colors.darkGray};
     transition: ${theme.transition};
   `}
   min-height: 70px;
