@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { DefaultAvatar } from '../../assets';
-import { IContactsProps } from '../../interfaces';
+import { IContactsProps, IUser } from '../../interfaces';
 import { Brand } from '../../layouts';
 import {
   ContactsContainer, ContactsBlock, Contact,
@@ -20,9 +20,9 @@ function Contacts(props: IContactsProps) {
     }
   }, [currentUser]);
 
-  const changeCurrentChat = (contact: any, id: string) => {
-    changeChat(contact);
+  const changeCurrentChat = (id: string, contact: IUser) => {
     setSelectedContact(id);
+    changeChat(contact);
   }
 
   return (
@@ -38,7 +38,7 @@ function Contacts(props: IContactsProps) {
                 <Contact 
                   key={id}
                   isSelectedContact={selectedContact === id ? true : false}
-                  onClick={() => changeCurrentChat(contact, id)}
+                  onClick={() => changeCurrentChat(id, contact)}
                 >
                   <AvatarImg
                     src={

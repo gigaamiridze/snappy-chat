@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { usersRoute } from '../utils';
 import { IUser } from '../interfaces';
-import { Contacts, Welcome } from '../layouts';
+import { Contacts, Welcome, ChatContent } from '../layouts';
 import { ChatContainer } from '../components';
 
 function Chat() {
   const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
+  const [currentChat, setCurrentChat] = useState<IUser | undefined>(undefined);
   const [contacts, setContacts] = useState<IUser[]>([]);
-  const [currentChat, setCurrentChat] = useState<any | undefined>(undefined);
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -36,7 +36,7 @@ function Chat() {
     setContacts(data.users);
   }
 
-  const handleChatChange = (chat: any) => {
+  const handleChatChange = (chat: IUser) => {
     setCurrentChat(chat);
   }
 
@@ -47,7 +47,11 @@ function Chat() {
         currentUser={currentUser}
         changeChat={handleChatChange} 
       />
-      <Welcome currentUser={currentUser} />
+      {currentChat === undefined ? (
+        <Welcome currentUser={currentUser} />
+      ) : (
+        <ChatContent />
+      )}
     </ChatContainer>
   )
 }

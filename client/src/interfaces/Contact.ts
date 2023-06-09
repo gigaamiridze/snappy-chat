@@ -3,7 +3,7 @@ import { IUser } from './User';
 export interface IContactsProps {
   contacts: IUser[];
   currentUser: IUser | undefined;
-  changeChat: (chat: any) => void;
+  changeChat: (chat: IUser) => void;
 }
 
 export interface IContactProps {
