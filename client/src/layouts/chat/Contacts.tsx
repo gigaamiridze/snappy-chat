@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { DefaultAvatar } from '../../assets';
 import { IContactsProps } from '../../interfaces';
 import { Brand } from '../../layouts';
 import {
@@ -31,7 +32,7 @@ function Contacts(props: IContactsProps) {
           <Brand isAuthContent={false} />
           <ContactsBlock>
             {contacts.map(contact => {
-              const { id, username, avatarImage } = contact;
+              const { id, username, avatarImage, isAvatarImageSet } = contact;
 
               return (
                 <Contact 
@@ -40,7 +41,11 @@ function Contacts(props: IContactsProps) {
                   onClick={() => changeCurrentChat(contact, id)}
                 >
                   <AvatarImg
-                    src={`data:image/svg+xml;base64,${avatarImage}`}
+                    src={
+                      isAvatarImageSet
+                        ? `data:image/svg+xml;base64,${avatarImage}`
+                        : DefaultAvatar
+                    }
                     isChatContent={true}
                     alt={`${username}'s avatar`}
                   />
