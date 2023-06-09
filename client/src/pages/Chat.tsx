@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { usersRoute } from '../utils';
 import { IUser } from '../interfaces';
-import { Contacts } from '../layouts';
+import { Contacts, Welcome } from '../layouts';
 import { ChatContainer } from '../components';
 
 function Chat() {
@@ -47,6 +47,7 @@ function Chat() {
         currentUser={currentUser}
         changeChat={handleChatChange} 
       />
+      <Welcome currentUser={currentUser} />
     </ChatContainer>
   )
 }
