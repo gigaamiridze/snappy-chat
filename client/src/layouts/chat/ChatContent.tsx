@@ -1,5 +1,5 @@
 import { IChatContentProps } from '../../interfaces';
-import { ChatHeader } from '../../layouts';
+import { ChatHeader, Messages, ChatFooter } from '../../layouts';
 import { ChatContentContainer } from '../../components';
 
 function ChatContent(props: IChatContentProps) {
@@ -8,6 +8,8 @@ function ChatContent(props: IChatContentProps) {
   return (
     <ChatContentContainer>
       <ChatHeader currentChat={currentChat} />
+      <Messages />
+      <ChatFooter />
     </ChatContentContainer>
   )
 }

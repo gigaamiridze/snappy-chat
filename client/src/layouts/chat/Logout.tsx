@@ -1,6 +1,6 @@
 import { MdPowerSettingsNew } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../components';
+import { LogoutButton } from '../../components';
 
 function Logout() {
   const navigate = useNavigate();
@@ -11,9 +11,9 @@ function Logout() {
   }
 
   return (
-    <Button onClick={handleLogout}>
+    <LogoutButton onClick={handleLogout}>
       <MdPowerSettingsNew title='Logout' />
-    </Button>
+    </LogoutButton>
   )
 }
 
