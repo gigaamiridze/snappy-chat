@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 const Header = styled.header`
-  padding: 15px 25px 0;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export default Header;
