@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import { PORT } from './config';
-import { authRouter, userRouter } from './routes';
+import { authRouter, userRouter, messageRouter } from './routes';
 import { connectDB } from './database';
 
 const app: Application = express();
@@ -13,6 +13,7 @@ app.use(express.json());
 
 // Route middlewares
 app.use('/api/auth', authRouter);
+app.use('/api', messageRouter);
 app.use('/api', userRouter);
 
 const startApp = async () => {
