@@ -1,6 +1,10 @@
-function Messages() {
+import { IMessagesProps } from '../../interfaces';
+
+function Messages({ hideEmojiPicker }: IMessagesProps) {
   return (
-    <div>Messages</div>
+    <div onClick={hideEmojiPicker}>
+      Messages
+    </div>
   )
 }
 
