@@ -1,28 +1,44 @@
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 import { AiOutlineSend } from 'react-icons/ai';
 import { BsEmojiSmileFill } from 'react-icons/bs';
-import Picker from 'emoji-picker-react';
+import Picker, { EmojiClickData } from 'emoji-picker-react';
 import { Footer, EmojiWrapper, ChatForm, ChatInput, ChatButton } from '../../components';
 
 function ChatFooter() {
-  const [isShowEmojiPicker, setIsShowEmojiPicker] = useState<boolean>(false);
+  const [isPickerVisible, setIsPickerVisible] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>('');
 
-  const handleEmojiPickerHideShow = () => {
-    setIsShowEmojiPicker(!isShowEmojiPicker);
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setMessage('');
+  }
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setMessage(event.target.value);
+  }
+
+  const handlePickerVisible = () => {
+    setIsPickerVisible(!isPickerVisible);
+  }
+
+  const handleEmojiClick = (data: EmojiClickData) => {
+    setMessage((prevValue) => prevValue + data.emoji);
   }
 
   return (
     <Footer>
       <EmojiWrapper>
-        <BsEmojiSmileFill onClick={handleEmojiPickerHideShow}/>
-        {isShowEmojiPicker && <Picker />}
+        <BsEmojiSmileFill onClick={handlePickerVisible}/>
+        {isPickerVisible && <Picker onEmojiClick={handleEmojiClick} width={270} height={250} />}
       </EmojiWrapper>
-      <ChatForm>
+      <ChatForm onSubmit={(e) => handleSubmit(e)}>
         <ChatInput
           type='text'
           name='message'
           id='message'
           placeholder='Type your message here...'
+          value={message}
+          onChange={(e) => handleChange(e)}
         />
         <ChatButton type='submit'>
           <AiOutlineSend />

@@ -16,18 +16,7 @@ const EmojiWrapper = styled.div`
       border-color: ${theme.colors.mediumPurple} !important;
     `}
     position: absolute !important;
-    top: -306px;
-    height: 300px !important;
-
-    .epr-body::-webkit-scrollbar {
-      background-color: ${({ theme }) => theme.colors.nightBlue};
-      width: 3px;
-
-      &-thumb {
-        background-color: ${({ theme }) => theme.colors.mediumPurple};
-        border-radius: 6px;
-      }
-    }
+    top: -256px;
 
     .epr-search {
       background-color: transparent !important;
@@ -39,6 +28,30 @@ const EmojiWrapper = styled.div`
         font-family: ${theme.fonts.primary};
         color: ${theme.colors.white} !important;
       `}
+    }
+
+    .epr-header-overlay {
+      padding: 10px;
+    }
+
+    .epr-category-nav {
+      padding: 0 10px 10px;
+    }
+
+    .epr-body::-webkit-scrollbar {
+      background-color: ${({ theme }) => theme.colors.nightBlue};
+      width: 3px;
+
+      &-thumb {
+        background-color: ${({ theme }) => theme.colors.mediumPurple};
+        border-radius: 6px;
+      }
+    }
+
+    .epr-emoji-category-label {
+      font-family: ${({ theme }) => theme.fonts.primary};
+      font-size: 14px;
+      height: 35px;
     }
 
     .epr-preview {
