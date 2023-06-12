@@ -1,4 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
+import { toast } from 'react-toastify';
 import { AiOutlineSend } from 'react-icons/ai';
 import { BsEmojiSmileFill } from 'react-icons/bs';
 import Picker, { EmojiClickData } from 'emoji-picker-react';
@@ -7,11 +8,17 @@ import { Footer, EmojiWrapper, ChatForm, ChatInput, ChatButton } from '../../com
 
 function ChatFooter(props: IChatFooterProps) {
   const [message, setMessage] = useState<string>('');
-  const { toggleEmojiPickerVisible, hideEmojiPicker, isPickerVisible } = props;
+  const { handleSendMessage, toggleEmojiPickerVisible, hideEmojiPicker, isPickerVisible } = props;
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setMessage('');
+    
+    if (message.length > 0) {
+      handleSendMessage(message);
+      setMessage('');
+    } else {
+      toast.error('Please fill in the field');
+    }
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

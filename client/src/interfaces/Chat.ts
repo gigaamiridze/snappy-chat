@@ -6,6 +6,7 @@ export interface IWelcomeProps {
 
 export interface IChatContentProps {
   currentChat: IUser | undefined;
+  currentUser: IUser | undefined;
 }
 
 export interface IChatHeaderProps {
@@ -17,6 +18,7 @@ export interface IMessagesProps {
 }
 
 export interface IChatFooterProps {
+  handleSendMessage: (message: string) => void;
   toggleEmojiPickerVisible: () => void;
   hideEmojiPicker: () => void;
   isPickerVisible: boolean;

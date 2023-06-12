@@ -51,7 +51,7 @@ const EmojiWrapper = styled.div`
     .epr-emoji-category-label {
       font-family: ${({ theme }) => theme.fonts.primary};
       font-size: 14px;
-      height: 35px;
+      height: 30px !important;
     }
 
     .epr-preview {
