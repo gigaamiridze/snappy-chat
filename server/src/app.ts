@@ -13,8 +13,8 @@ app.use(express.json());
 
 // Route middlewares
 app.use('/api/auth', authRouter);
-app.use('/api', messageRouter);
-app.use('/api', userRouter);
+app.use('/api/users', userRouter);
+app.use('/api/messages', messageRouter);
 
 const startApp = async () => {
   try {
