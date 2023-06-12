@@ -3,7 +3,22 @@ import { Message } from '../models';
 
 export const getAllMessage = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    res.status(200).send('All Message');
+    const { from, to } = req.body;
+
+    const messages = await Message.find({
+      users: {
+        $all: [from, to],
+      },
+    }).sort({ updatedAt: 1 });
+
+    const projectedMessages = messages.map((msg) => {
+      return {
+        fromSelf: msg.sender.toString() === from,
+        message: msg.message,
+      }
+    });
+
+    res.status(200).json(projectedMessages);
   } catch (error) {
     next(error);
   }
@@ -19,7 +34,7 @@ export const addMessage = async (req: Request, res: Response, next: NextFunction
     });
 
     if (data) {
-      return res.status(200).json({
+      return res.status(201).json({
         status: 'success',
         message: 'Data added successfully',
       });
