@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { getMessagesRoute } from '../../utils';
 import { IMessagesProps, IMessage } from '../../interfaces';
+import { MessagesContainer, MessageWrapper, Message } from '../../components';
 
 function Messages(props: IMessagesProps) {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -20,15 +21,19 @@ function Messages(props: IMessagesProps) {
   }
 
   return (
-    <div onClick={hideEmojiPicker}>
-      {messages.map((item, index) => {
-        const { fromSelf, message } = item;
+    <MessagesContainer onClick={hideEmojiPicker}>
+      {messages.map((item) => {
+        const { id, fromSelf, message } = item;
 
         return (
-          <p key={index}>{message}</p>
+          <MessageWrapper key={id} isSended={fromSelf}>
+            <Message isSended={fromSelf}>
+              {message}
+            </Message>
+          </MessageWrapper>
         )
       })}
-    </div>
+    </MessagesContainer>
   )
 }
 

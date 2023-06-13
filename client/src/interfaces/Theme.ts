@@ -6,6 +6,7 @@ export interface ITheme {
 
 interface IColors {
   white: string;
+  silver: string;
   black: string;
   eerieBlack: string;
   strongBlack: string;
@@ -17,6 +18,7 @@ interface IColors {
   ceanBlue: string;
   hanPurple: string;
   mediumPurple: string;
+  darkPurple: string;
 }
 
 interface IFonts {

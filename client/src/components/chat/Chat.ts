@@ -1,6 +1,15 @@
 import styled, { css } from 'styled-components';
 
-const ChatInput = styled.input`
+export const ChatForm = styled.form`
+  background-color: ${({ theme }) => theme.colors.transparentWhite};
+  width: 100%;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  column-gap: 18px;
+`;
+
+export const ChatInput = styled.input`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     font-family: ${theme.fonts.primary};
@@ -12,5 +21,3 @@ const ChatInput = styled.input`
   padding-left: 18px;
   font-size: 17px;
 `;
-
-export default ChatInput;

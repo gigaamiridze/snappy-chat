@@ -5,6 +5,11 @@ export interface IMessagesProps extends IChatContentProps {
 }
 
 export interface IMessage {
+  id: string;
   fromSelf: boolean;
   message: string;
+}
+
+export interface IMessageType {
+  isSended: boolean;
 }

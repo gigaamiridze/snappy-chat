@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { IContactProps } from '../../interfaces';
 
-const Contact = styled.div<IContactProps>`
+export const Contact = styled.div<IContactProps>`
   ${({ isSelectedContact, theme }) => css`
     background-color: ${isSelectedContact ? theme.colors.mediumPurple : theme.colors.darkGray};
     transition: ${theme.transition};
@@ -16,4 +16,20 @@ const Contact = styled.div<IContactProps>`
   cursor: pointer;
 `;
 
-export default Contact;
+export const ContactsBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  row-gap: 13px;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.darkGray};
+    width: 1.5px;
+    border-radius: 16px;
+  }
+`;

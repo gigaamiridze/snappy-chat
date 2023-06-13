@@ -1,6 +1,22 @@
 import styled, { css } from 'styled-components';
 
-const AuthInput = styled.input`
+export const AuthContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.strongBlack};
+  border-radius: 32px;
+  padding: 48px 80px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+`;
+
+export const AuthForm = styled.form`
+  width: 305px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+`;
+
+export const AuthInput = styled.input`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     font-family: ${theme.fonts.primary};
@@ -23,5 +39,3 @@ const AuthInput = styled.input`
     border-color: ${({ theme }) => theme.colors.mediumPurple};
   }
 `;
-
-export default AuthInput;

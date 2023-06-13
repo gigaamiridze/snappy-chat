@@ -1,12 +1,9 @@
-export { default as ContactsBlock } from './ContactsBlock';
 export { default as EmojiWrapper } from './EmojiWrapper';
-export { default as CurrentUser } from './CurrentUser';
-export { default as UserDetails } from './UserDetails';
-export { default as ChatInput } from './ChatInput';
-export { default as ChatForm } from './ChatForm';
-export { default as Username } from './Username';
-export { default as Contact } from './Contact';
 export { default as Header } from './Header';
 export { default as Footer } from './Footer';
 export * from './Container';
+export * from './Contact';
+export * from './Message';
 export * from './Button';
+export * from './Chat';
+export * from './User';
