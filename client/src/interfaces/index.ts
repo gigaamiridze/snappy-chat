@@ -1,5 +1,6 @@
 export * from './Account';
 export * from './Contact';
+export * from './Message';
 export * from './Avatar';
 export * from './Theme';
 export * from './Brand';

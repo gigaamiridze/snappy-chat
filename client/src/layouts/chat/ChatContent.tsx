@@ -28,7 +28,11 @@ function ChatContent(props: IChatContentProps) {
   return (
     <ChatContentContainer>
       <ChatHeader currentChat={currentChat} />
-      <Messages hideEmojiPicker={hideEmojiPicker} />
+      <Messages 
+        hideEmojiPicker={hideEmojiPicker} 
+        currentChat={currentChat}
+        currentUser={currentUser}
+      />
       <ChatFooter 
         handleSendMessage={handleSendMessage}
         toggleEmojiPickerVisible={toggleEmojiPickerVisible}
