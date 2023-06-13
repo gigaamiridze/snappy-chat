@@ -3,5 +3,5 @@ import { getAllMessage, addMessage } from '../controllers';
 
 export const messageRouter = Router();
 
-messageRouter.get('/get', getAllMessage);
+messageRouter.post('/get', getAllMessage);
 messageRouter.post('/add', addMessage);
