@@ -5,7 +5,8 @@ import { Buffer } from 'buffer';
 import axios from 'axios';
 import { Loader } from '../assets';
 import { IUser } from '../interfaces';
-import { avatarRoute, getRandomNumber } from '../utils';
+import { ApiRoutes } from '../constants';
+import { getRandomNumber } from '../utils';
 import { SetAvatarContainer, PickAvatarTitle, Avatars, AvatarWrapper, AvatarImg, AvatarButton } from '../components';
 
 function SetAvatar() {
@@ -47,7 +48,7 @@ function SetAvatar() {
       const userInfo = localStorage.getItem('snappy-chat-user');
       if (userInfo) {
         const user: IUser = await JSON.parse(userInfo);
-        const { data } = await axios.post(`${avatarRoute}/${user.id}`, {
+        const { data } = await axios.post(`${ApiRoutes.SET_AVATAR}/${user.id}`, {
           image: avatars[selectedAvatar],
         });
         

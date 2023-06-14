@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { getMessagesRoute } from '../../utils';
+import { ApiRoutes } from '../../constants';
 import { IMessagesProps, IMessage } from '../../interfaces';
 import { MessagesContainer, MessageWrapper, Message } from '../../components';
 
@@ -13,7 +13,7 @@ function Messages(props: IMessagesProps) {
   }, [currentChat]);
 
   const getAllMessage = async () => {
-    const { data } = await axios.post(getMessagesRoute, {
+    const { data } = await axios.post(ApiRoutes.GET_MESSAGES, {
       from: currentUser?.id,
       to: currentChat?.id,
     });

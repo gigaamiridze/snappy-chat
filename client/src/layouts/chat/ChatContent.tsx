@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { addMessageRoute } from '../../utils';
+import { ApiRoutes } from '../../constants';
 import { IChatContentProps } from '../../interfaces';
 import { ChatHeader, Messages, ChatFooter } from '../../layouts';
 import { ChatContentContainer } from '../../components';
@@ -18,7 +18,7 @@ function ChatContent(props: IChatContentProps) {
   }
 
   const handleSendMessage = async (message: string) => {
-    await axios.post(addMessageRoute, {
+    await axios.post(ApiRoutes.ADD_MESSAGE, {
       from: currentUser?.id,
       to: currentChat?.id,
       message: message,

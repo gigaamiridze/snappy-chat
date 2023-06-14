@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { usersRoute } from '../utils';
 import { IUser } from '../interfaces';
+import { ApiRoutes } from '../constants';
 import { Contacts, Welcome, ChatContent } from '../layouts';
 import { ChatContainer } from '../components';
 
@@ -32,7 +32,7 @@ function Chat() {
   }, [currentUser]);
 
   const getAllContacts = async () => {
-    const { data } = await axios.get(`${usersRoute}/${currentUser?.id}`);
+    const { data } = await axios.get(`${ApiRoutes.ALL_USER}/${currentUser?.id}`);
     setContacts(data.users);
   }
 

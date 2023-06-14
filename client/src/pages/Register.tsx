@@ -3,8 +3,9 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ApiRoutes } from '../constants';
 import { IRegisterFormFields } from '../interfaces';
-import { removeWhiteSpaces, registerRoute } from '../utils';
+import { removeWhiteSpaces } from '../utils';
 import { 
   usernameValidation, emailValidation, passwordValidation, confirmPassValidation,
   usernameValidate, emailValidate, passwordValidate, confirmPassValidate
@@ -28,7 +29,7 @@ function Register() {
     const { username, email, password } = data;
     const clearedUsername = removeWhiteSpaces(username);
   
-    const response = axios.post(registerRoute, {
+    const response = axios.post(ApiRoutes.REGISTER, {
       username: clearedUsername,
       email,
       password,

@@ -3,8 +3,9 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { ApiRoutes } from '../constants';
 import { ILoginFormFields } from '../interfaces';
-import { removeWhiteSpaces, loginRoute } from '../utils';
+import { removeWhiteSpaces } from '../utils';
 import { loginUsernameValidation, loginUsernameValidate, loginPassValidation, loginPassValidate } from '../validations';
 import { AuthContainer, AuthForm, AuthInput, AuthButton, Loader } from '../components';
 import { Brand, AccountQuestion } from '../layouts';
@@ -25,7 +26,7 @@ function Login() {
     const { username, password } = data;
     const clearedUsername = removeWhiteSpaces(username);
 
-    const response = axios.post(loginRoute, {
+    const response = axios.post(ApiRoutes.LOGIN, {
       username: clearedUsername,
       password,
     });
