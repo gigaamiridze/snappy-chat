@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Loader } from '../assets';
 import { IUser } from '../interfaces';
 import { getRandomNumber } from '../utils';
-import { ApiRoutes, PagesRoutes } from '../constants';
+import { ApiRoutes, PagesRoutes, AvatarApi } from '../constants';
 import { SetAvatarContainer, PickAvatarTitle, Avatars, AvatarWrapper, AvatarImg, AvatarButton } from '../components';
 
 function SetAvatar() {
@@ -22,15 +22,12 @@ function SetAvatar() {
     getAvatars();
   }, []);
   
-  const API_URL = 'https://api.multiavatar.com';
-  const API_KEY = 'nCBNYrwJEdlxaA';
-
   const getAvatars = async () => {
     try {
       const data: string[] = [];
       for (let i = 0; i < 4; i++) {
         const rndNum = getRandomNumber();
-        const image = await axios.get(`${API_URL}/${rndNum}?apikey=${API_KEY}`);
+        const image = await axios.get(`${AvatarApi.URL}/${rndNum}?apikey=${AvatarApi.KEY}`);
         const buffer = new Buffer(image.data);
         data.push(buffer.toString('base64'));
       }
