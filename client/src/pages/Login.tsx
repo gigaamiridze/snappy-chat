@@ -3,9 +3,9 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ApiRoutes } from '../constants';
-import { ILoginFormFields } from '../interfaces';
 import { removeWhiteSpaces } from '../utils';
+import { ILoginFormFields } from '../interfaces';
+import { ApiRoutes, PagesRoutes } from '../constants';
 import { loginUsernameValidation, loginUsernameValidate, loginPassValidation, loginPassValidate } from '../validations';
 import { AuthContainer, AuthForm, AuthInput, AuthButton, Loader } from '../components';
 import { Brand, AccountQuestion } from '../layouts';
@@ -18,7 +18,7 @@ function Login() {
 
   useEffect(() => {
     if (localStorage.getItem('snappy-chat-user')) {
-      navigate('/');
+      navigate(PagesRoutes.ROOT);
     }
   }, []);
 
@@ -39,7 +39,7 @@ function Login() {
         setDisabled(true);
         localStorage.setItem('snappy-chat-user', JSON.stringify(user));
         const timerId = setTimeout(() => {
-          navigate('/');
+          navigate(PagesRoutes.ROOT);
         }, 3000);
 
         return () => clearTimeout(timerId);

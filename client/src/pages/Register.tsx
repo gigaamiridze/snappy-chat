@@ -3,9 +3,9 @@ import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { ApiRoutes } from '../constants';
-import { IRegisterFormFields } from '../interfaces';
 import { removeWhiteSpaces } from '../utils';
+import { IRegisterFormFields } from '../interfaces';
+import { ApiRoutes, PagesRoutes } from '../constants';
 import { 
   usernameValidation, emailValidation, passwordValidation, confirmPassValidation,
   usernameValidate, emailValidate, passwordValidate, confirmPassValidate
@@ -21,7 +21,7 @@ function Register() {
 
   useEffect(() => {
     if (localStorage.getItem('snappy-chat-user')) {
-      navigate('/');
+      navigate(PagesRoutes.ROOT);
     }
   }, []);
 
@@ -43,7 +43,7 @@ function Register() {
         setDisabled(true);
         localStorage.setItem('snappy-chat-user', JSON.stringify(user));
         const timerId = setTimeout(() => {
-          navigate('/set-avatar');
+          navigate(PagesRoutes.SET_AVATAR);
         }, 3000);
 
         return () => clearTimeout(timerId);

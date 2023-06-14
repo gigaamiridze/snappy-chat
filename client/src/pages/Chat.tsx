@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { IUser } from '../interfaces';
-import { ApiRoutes } from '../constants';
+import { ApiRoutes, PagesRoutes } from '../constants';
 import { Contacts, Welcome, ChatContent } from '../layouts';
 import { ChatContainer } from '../components';
 
@@ -15,7 +15,7 @@ function Chat() {
   useEffect(() => {
     const userInfo = localStorage.getItem('snappy-chat-user');
     if (!userInfo) {
-      navigate('/login');
+      navigate(PagesRoutes.LOGIN);
     } else {
       setCurrentUser(JSON.parse(userInfo));
     }
@@ -26,7 +26,7 @@ function Chat() {
       if (currentUser.isAvatarImageSet) {
         getAllContacts();
       } else {
-        navigate('/set-avatar');
+        navigate(PagesRoutes.SET_AVATAR);
       }
     }
   }, [currentUser]);

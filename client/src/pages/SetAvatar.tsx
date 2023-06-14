@@ -5,8 +5,8 @@ import { Buffer } from 'buffer';
 import axios from 'axios';
 import { Loader } from '../assets';
 import { IUser } from '../interfaces';
-import { ApiRoutes } from '../constants';
 import { getRandomNumber } from '../utils';
+import { ApiRoutes, PagesRoutes } from '../constants';
 import { SetAvatarContainer, PickAvatarTitle, Avatars, AvatarWrapper, AvatarImg, AvatarButton } from '../components';
 
 function SetAvatar() {
@@ -17,7 +17,7 @@ function SetAvatar() {
 
   useEffect(() => {
     if (!localStorage.getItem('snappy-chat-user')) {
-      navigate('/login');
+      navigate(PagesRoutes.LOGIN);
     }
     getAvatars();
   }, []);
@@ -56,7 +56,7 @@ function SetAvatar() {
           user.isAvatarImageSet = true;
           user.avatarImage = data.image;
           localStorage.setItem('snappy-chat-user', JSON.stringify(user));
-          navigate('/');
+          navigate(PagesRoutes.ROOT);
         } else {
           toast.error('Error setting avatar. Please try again');
         }
