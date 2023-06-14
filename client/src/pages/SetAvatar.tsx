@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Loader } from '../assets';
 import { IUser } from '../interfaces';
 import { getRandomNumber } from '../utils';
-import { ApiRoutes, PagesRoutes, AvatarApi } from '../constants';
+import { ApiRoutes, PagesRoutes, AvatarApi, App } from '../constants';
 import { SetAvatarContainer, PickAvatarTitle, Avatars, AvatarWrapper, AvatarImg, AvatarButton } from '../components';
 
 function SetAvatar() {
@@ -16,7 +16,7 @@ function SetAvatar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem('snappy-chat-user')) {
+    if (!localStorage.getItem(App.SNAPPY_CHAT_USER)) {
       navigate(PagesRoutes.LOGIN);
     }
     getAvatars();
@@ -42,7 +42,7 @@ function SetAvatar() {
     if (selectedAvatar === undefined) {
       toast.error('Please select an avatar');
     } else {
-      const userInfo = localStorage.getItem('snappy-chat-user');
+      const userInfo = localStorage.getItem(App.SNAPPY_CHAT_USER);
       if (userInfo) {
         const user: IUser = await JSON.parse(userInfo);
         const { data } = await axios.post(`${ApiRoutes.SET_AVATAR}/${user.id}`, {
@@ -52,7 +52,7 @@ function SetAvatar() {
         if (data.isSet) {
           user.isAvatarImageSet = true;
           user.avatarImage = data.image;
-          localStorage.setItem('snappy-chat-user', JSON.stringify(user));
+          localStorage.setItem(App.SNAPPY_CHAT_USER, JSON.stringify(user));
           navigate(PagesRoutes.ROOT);
         } else {
           toast.error('Error setting avatar. Please try again');

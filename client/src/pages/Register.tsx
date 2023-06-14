@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { removeWhiteSpaces } from '../utils';
 import { IRegisterFormFields } from '../interfaces';
-import { ApiRoutes, PagesRoutes } from '../constants';
+import { ApiRoutes, PagesRoutes, App } from '../constants';
 import { 
   usernameValidation, emailValidation, passwordValidation, confirmPassValidation,
   usernameValidate, emailValidate, passwordValidate, confirmPassValidate
@@ -20,7 +20,7 @@ function Register() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem('snappy-chat-user')) {
+    if (localStorage.getItem(App.SNAPPY_CHAT_USER)) {
       navigate(PagesRoutes.ROOT);
     }
   }, []);
@@ -41,7 +41,7 @@ function Register() {
         toast.success(`Congratulations ${user.username}! Your registration has been successful`);
         setButtonText('creating user...');
         setDisabled(true);
-        localStorage.setItem('snappy-chat-user', JSON.stringify(user));
+        localStorage.setItem(App.SNAPPY_CHAT_USER, JSON.stringify(user));
         const timerId = setTimeout(() => {
           navigate(PagesRoutes.SET_AVATAR);
         }, 3000);

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { removeWhiteSpaces } from '../utils';
 import { ILoginFormFields } from '../interfaces';
-import { ApiRoutes, PagesRoutes } from '../constants';
+import { ApiRoutes, PagesRoutes, App } from '../constants';
 import { loginUsernameValidation, loginUsernameValidate, loginPassValidation, loginPassValidate } from '../validations';
 import { AuthContainer, AuthForm, AuthInput, AuthButton, Loader } from '../components';
 import { Brand, AccountQuestion } from '../layouts';
@@ -17,7 +17,7 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem('snappy-chat-user')) {
+    if (localStorage.getItem(App.SNAPPY_CHAT_USER)) {
       navigate(PagesRoutes.ROOT);
     }
   }, []);
@@ -37,7 +37,7 @@ function Login() {
         toast.success(`Congratulations ${user.username}, you're now logged in!`);
         setButtonText('logging in...');
         setDisabled(true);
-        localStorage.setItem('snappy-chat-user', JSON.stringify(user));
+        localStorage.setItem(App.SNAPPY_CHAT_USER, JSON.stringify(user));
         const timerId = setTimeout(() => {
           navigate(PagesRoutes.ROOT);
         }, 3000);
