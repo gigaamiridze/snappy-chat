@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { NoMessage } from '../../assets';
 import { ApiRoutes } from '../../constants';
 import { IMessagesProps, IMessage } from '../../interfaces';
-import { MessagesContainer, MessageWrapper, Message } from '../../components';
+import { MessagesContainer, MessageWrapper, Message, NoMessagesContent } from '../../components';
 
 function Messages(props: IMessagesProps) {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -21,19 +22,28 @@ function Messages(props: IMessagesProps) {
   }
 
   return (
-    <MessagesContainer onClick={hideEmojiPicker}>
-      {messages.map((item) => {
-        const { id, fromSelf, message } = item;
+    <>
+      {messages.length > 0 ? (
+        <MessagesContainer onClick={hideEmojiPicker}>
+          {messages.map((item) => {
+            const { id, fromSelf, message } = item;
 
-        return (
-          <MessageWrapper key={id} isSended={fromSelf}>
-            <Message isSended={fromSelf}>
-              {message}
-            </Message>
-          </MessageWrapper>
-        )
-      })}
-    </MessagesContainer>
+            return (
+              <MessageWrapper key={id} isSended={fromSelf}>
+                <Message isSended={fromSelf}>
+                  {message}
+                </Message>
+              </MessageWrapper>
+            )
+          })}
+        </MessagesContainer>
+      ) : (
+        <NoMessagesContent>
+          <img src={NoMessage} alt='No message' />
+          <p>No messages sent, please type a message and send</p>
+        </NoMessagesContent>
+      )}
+    </>
   )
 }
 

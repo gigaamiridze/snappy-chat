@@ -36,3 +36,20 @@ export const Message = styled.p<IMessageType>`
   border-radius: 16px;
   overflow-wrap: break-word;
 `;
+
+export const NoMessagesContent = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 30px;
+
+  img {
+    width: 145px;
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.white};
+    font-size: 18px;
+  }
+`;
