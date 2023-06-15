@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { DefaultAvatar } from '../../assets';
+import { DefaultAvatar, NoUsers } from '../../assets';
 import { IContactsProps, IUser } from '../../interfaces';
 import { Brand } from '../../layouts';
 import {
   ContactsContainer, ContactsBlock, Contact,
-  AvatarImg, CurrentUser, Username
+  AvatarImg, CurrentUser, Username, NoUsersContent
 } from '../../components';
 
 function Contacts(props: IContactsProps) {
@@ -54,7 +54,12 @@ function Contacts(props: IContactsProps) {
           })}
         </ContactsBlock>
       ) : (
-        <p>No users found</p>
+        <NoUsersContent>
+          <div>
+            <img src={NoUsers} alt='No users' />
+            <h3>No Users Found</h3>
+          </div>
+        </NoUsersContent>
       )}
       {currentUsername && currentUserImage && (
         <CurrentUser>
