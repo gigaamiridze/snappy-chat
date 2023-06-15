@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const ChatContainer = styled.div`
+export const ChatContainer = styled(motion.div)`
   ${({ theme }) => css`
     background-color: ${theme.colors.strongBlack};
     box-shadow: ${theme.colors.shadowBlack} 0px 5px 15px;

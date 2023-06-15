@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const AuthContainer = styled.div`
+export const AuthContainer = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.strongBlack};
   border-radius: 32px;
   padding: 48px 80px;

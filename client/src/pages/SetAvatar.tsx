@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Loader } from '../assets';
 import { IUser } from '../interfaces';
 import { getRandomNumber } from '../utils';
+import { pageAnimation } from '../animations';
 import { ApiRoutes, PagesRoutes, AvatarApi, App } from '../constants';
 import { SetAvatarContainer, PickAvatarTitle, Avatars, AvatarWrapper, AvatarImg, AvatarButton } from '../components';
 
@@ -16,9 +17,9 @@ function SetAvatar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!localStorage.getItem(App.SNAPPY_CHAT_USER)) {
-      navigate(PagesRoutes.LOGIN);
-    }
+    // if (!localStorage.getItem(App.SNAPPY_CHAT_USER)) {
+    //   navigate(PagesRoutes.LOGIN);
+    // }
     getAvatars();
   }, []);
   
@@ -66,7 +67,12 @@ function SetAvatar() {
       {isLoading ? (
         <img src={Loader} alt='loader' />
       ) : (
-        <SetAvatarContainer>
+        <SetAvatarContainer
+          variants={pageAnimation}
+          initial='initial'
+          animate='animate'
+          exit='exit'
+        >
           <PickAvatarTitle>Pick an avatar as your profile picture</PickAvatarTitle>
           <Avatars>
             {avatars.slice(0, 4).map((avatar, index) => (

@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { removeWhiteSpaces } from '../utils';
+import { pageAnimation } from '../animations';
 import { IRegisterFormFields } from '../interfaces';
 import { ApiRoutes, PagesRoutes, App } from '../constants';
 import { 
@@ -64,7 +65,12 @@ function Register() {
   }
 
   return (
-    <AuthContainer>
+    <AuthContainer
+      variants={pageAnimation}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
       <Brand isAuthContent={true} />
       <AuthForm onSubmit={onSubmit}>
         <AuthInput

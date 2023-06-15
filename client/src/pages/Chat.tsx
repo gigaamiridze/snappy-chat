@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { IUser } from '../interfaces';
+import { pageAnimation } from '../animations';
 import { ApiRoutes, PagesRoutes, App } from '../constants';
 import { Contacts, Welcome, ChatContent } from '../layouts';
 import { ChatContainer } from '../components';
@@ -41,7 +42,12 @@ function Chat() {
   }
 
   return (
-    <ChatContainer>
+    <ChatContainer
+      variants={pageAnimation}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
       <Contacts 
         contacts={contacts} 
         currentUser={currentUser}

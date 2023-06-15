@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { removeWhiteSpaces } from '../utils';
+import { pageAnimation } from '../animations';
 import { ILoginFormFields } from '../interfaces';
 import { ApiRoutes, PagesRoutes, App } from '../constants';
 import { loginUsernameValidation, loginUsernameValidate, loginPassValidation, loginPassValidate } from '../validations';
@@ -58,7 +59,12 @@ function Login() {
   }
 
   return (
-    <AuthContainer>
+    <AuthContainer
+      variants={pageAnimation}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
       <Brand isAuthContent={true} />
       <AuthForm onSubmit={onSubmit}>
         <AuthInput
