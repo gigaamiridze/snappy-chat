@@ -2,10 +2,10 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Snappy Chat API with Node, Express, MongoDB, Mongoose and Socket.IO",
-  "main": "./src/app.ts",
+  "main": "./src/server.ts",
   "scripts": {
-    "dev": "nodemon ./src/app.ts",
-    "start": "node ./dist/app.js"
+    "dev": "nodemon ./src/server.ts",
+    "start": "node ./dist/server.js"
   },
   "keywords": [
     "Node",
