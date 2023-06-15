@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { ApiRoutes } from '../../constants';
+import { opacityAnimation } from '../../animations';
 import { IChatContentProps } from '../../interfaces';
 import { ChatHeader, Messages, ChatFooter } from '../../layouts';
 import { ChatContentContainer } from '../../components';
@@ -26,7 +27,11 @@ function ChatContent(props: IChatContentProps) {
   }
 
   return (
-    <ChatContentContainer>
+    <ChatContentContainer
+      variants={opacityAnimation}
+      initial='initial'
+      animate='animate'
+    >
       <ChatHeader currentChat={currentChat} />
       <Messages 
         hideEmojiPicker={hideEmojiPicker} 

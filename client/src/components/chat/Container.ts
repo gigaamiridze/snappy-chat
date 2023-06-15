@@ -13,7 +13,7 @@ export const ChatContainer = styled(motion.div)`
   border-radius: 32px;
 `;
 
-export const ChatContentContainer = styled.div`
+export const ChatContentContainer = styled(motion.div)`
   display: grid;
   grid-template-rows: 10% 78% 12%;
   padding-top: 16px;
