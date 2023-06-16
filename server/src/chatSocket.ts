@@ -1,11 +1,11 @@
 import { Server as SocketServer, Socket } from 'socket.io';
 import { Server } from 'http';
 import { ChatEvent } from './constants';
-import { Global } from './interfaces';
+import { IGlobal, ISocketData } from './interfaces';
 import { CLIENT_URL } from './config';
 
 const { CONNECTION, ADD_USER, MESSAGE, RECEIVE } = ChatEvent;
-declare const global: Global;
+declare const global: IGlobal;
 
 export const startChatSocket = (server: Server) => {
   const io = new SocketServer(server, {
@@ -24,7 +24,7 @@ export const startChatSocket = (server: Server) => {
       global.onlineUsers.set(userId, socket.id);
     });
   
-    socket.on(MESSAGE, (data: any) => {
+    socket.on(MESSAGE, (data: ISocketData) => {
       const sendUserSocket = global.onlineUsers.get(data.to);
   
       if (sendUserSocket) {
