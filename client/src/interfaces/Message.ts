@@ -6,6 +6,7 @@ export interface IMessagesProps {
   currentUser: IUser | undefined;
   setMessages: React.Dispatch<React.SetStateAction<IMessage[]>>;
   messages: IMessage[];
+  scrollRef: React.MutableRefObject<HTMLDivElement | null>;
 }
 
 export interface IMessage {

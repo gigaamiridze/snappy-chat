@@ -6,7 +6,7 @@ import { IMessagesProps } from '../../interfaces';
 import { MessagesContainer, MessageWrapper, Message, NoMessagesContent } from '../../components';
 
 function Messages(props: IMessagesProps) {
-  const { hideEmojiPicker, currentChat, currentUser, setMessages, messages } = props;
+  const { hideEmojiPicker, currentChat, currentUser, setMessages, messages, scrollRef } = props;
 
   useEffect(() => {
     getAllMessage();
@@ -28,7 +28,11 @@ function Messages(props: IMessagesProps) {
             const { id, fromSelf, message } = item;
 
             return (
-              <MessageWrapper key={id} isSended={fromSelf}>
+              <MessageWrapper 
+                key={id} 
+                ref={scrollRef}
+                isSended={fromSelf}
+              >
                 <Message isSended={fromSelf}>
                   {message}
                 </Message>
