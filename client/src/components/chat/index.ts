@@ -5,5 +5,5 @@ export * from './Container';
 export * from './Contact';
 export * from './Message';
 export * from './Button';
-export * from './Chat';
+export * from './Form';
 export * from './User';

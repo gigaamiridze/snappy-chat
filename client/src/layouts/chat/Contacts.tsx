@@ -3,8 +3,8 @@ import { DefaultAvatar, NoUsers } from '../../assets';
 import { IContactsProps, IUser } from '../../interfaces';
 import { Brand } from '../../layouts';
 import {
-  ContactsContainer, ContactsBlock, Contact,
-  AvatarImg, CurrentUser, Username, NoUsersContent
+  ContactsContainer, ContactsBlock, ContactsWrapper, Contact, 
+  AvatarImg, CurrentUser, Username, NoUsersContent, SearchInput 
 } from '../../components';
 
 function Contacts(props: IContactsProps) {
@@ -30,28 +30,35 @@ function Contacts(props: IContactsProps) {
       <Brand isAuthContent={false} />
       {contacts.length > 0 ? (
         <ContactsBlock>
-          {contacts.map(contact => {
-            const { id, username, avatarImage, isAvatarImageSet } = contact;
+          <SearchInput 
+            type='text'
+            placeholder='Search contacts'
+            autoComplete='off'
+          />
+          <ContactsWrapper>
+            {contacts.map(contact => {
+              const { id, username, avatarImage, isAvatarImageSet } = contact;
 
-            return (
-              <Contact
-                key={id}
-                isSelectedContact={selectedContact === id ? true : false}
-                onClick={() => changeCurrentChat(id, contact)}
-              >
-                <AvatarImg
-                  src={
-                    isAvatarImageSet
-                      ? `data:image/svg+xml;base64,${avatarImage}`
-                      : DefaultAvatar
-                  }
-                  isChatContent={true}
-                  alt={`${username}'s avatar`}
-                />
-                <Username>{username}</Username>
-              </Contact>
-            )
-          })}
+              return (
+                <Contact
+                  key={id}
+                  isSelectedContact={selectedContact === id ? true : false}
+                  onClick={() => changeCurrentChat(id, contact)}
+                >
+                  <AvatarImg
+                    src={
+                      isAvatarImageSet
+                        ? `data:image/svg+xml;base64,${avatarImage}`
+                        : DefaultAvatar
+                    }
+                    isChatContent={true}
+                    alt={`${username}'s avatar`}
+                  />
+                  <Username>{username}</Username>
+                </Contact>
+              )
+            })}
+          </ContactsWrapper>
         </ContactsBlock>
       ) : (
         <NoUsersContent>

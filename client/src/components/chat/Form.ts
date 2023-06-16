@@ -9,15 +9,24 @@ export const ChatForm = styled.form`
   column-gap: 18px;
 `;
 
-export const ChatInput = styled.input`
+const Input = styled.input`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     font-family: ${theme.fonts.primary};
   `}
-  background-color: transparent;
   width: 90%;
   border: none;
   outline: none;
   padding-left: 18px;
   font-size: 17px;
+`;
+
+export const ChatInput = styled(Input)`
+  background-color: transparent;
+`;
+
+export const SearchInput = styled(Input)`
+  background-color: ${({ theme }) => theme.colors.transparentWhite};
+  height: 35px;
+  border-radius: 32px;
 `;

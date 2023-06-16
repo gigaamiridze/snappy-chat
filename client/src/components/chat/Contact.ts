@@ -18,10 +18,14 @@ export const Contact = styled.div<IContactProps>`
 
 export const ContactsBlock = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  overflow: auto;
+  flex-direction: column;
   row-gap: 13px;
+`;
+
+export const ContactsWrapper = styled(ContactsBlock)`
+  width: 100%;
+  overflow: auto;
 
   &::-webkit-scrollbar {
     width: 3px;

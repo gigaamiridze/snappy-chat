@@ -46,6 +46,7 @@ function ChatFooter(props: IChatFooterProps) {
           placeholder='Type your message here...'
           value={message}
           onChange={(e) => handleChange(e)}
+          autoComplete='off'
         />
         <ChatButton type='submit'>
           <AiOutlineSend />
