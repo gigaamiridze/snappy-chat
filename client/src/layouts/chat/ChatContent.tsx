@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { opacityAnimation } from '../../animations';
 import { IChatContentProps, IMessage } from '../../interfaces';
@@ -8,8 +8,19 @@ import { ChatContentContainer } from '../../components';
 
 function ChatContent(props: IChatContentProps) {
   const [isPickerVisible, setIsPickerVisible] = useState<boolean>(false);
+  const [arrivalMessage, setArrivalMessage] = useState<IMessage | null>(null);
   const [messages, setMessages] = useState<IMessage[]>([]);
   const { currentChat, currentUser, socket } = props;
+
+  useEffect(() => {
+    socket.current?.on(ChatEvent.RECEIVE, (message: string) => {
+      setArrivalMessage({ fromSelf: false, message });
+    });
+  }, []);
+
+  useEffect(() => {
+    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage]);
 
   const hideEmojiPicker = () => {
     setIsPickerVisible(false);
