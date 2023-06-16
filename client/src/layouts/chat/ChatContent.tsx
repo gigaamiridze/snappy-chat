@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { ApiRoutes } from '../../constants';
 import { opacityAnimation } from '../../animations';
-import { IChatContentProps } from '../../interfaces';
+import { IChatContentProps, IMessage } from '../../interfaces';
+import { ApiRoutes, ChatEvent } from '../../constants';
 import { ChatHeader, Messages, ChatFooter } from '../../layouts';
 import { ChatContentContainer } from '../../components';
 
 function ChatContent(props: IChatContentProps) {
   const [isPickerVisible, setIsPickerVisible] = useState<boolean>(false);
-  const { currentChat, currentUser } = props;
+  const [messages, setMessages] = useState<IMessage[]>([]);
+  const { currentChat, currentUser, socket } = props;
 
   const hideEmojiPicker = () => {
     setIsPickerVisible(false);
@@ -22,8 +23,18 @@ function ChatContent(props: IChatContentProps) {
     await axios.post(ApiRoutes.ADD_MESSAGE, {
       from: currentUser?.id,
       to: currentChat?.id,
-      message: message,
+      message,
     });
+
+    socket.current?.emit(ChatEvent.MESSAGE, {
+      from: currentUser?.id,
+      to: currentChat?.id,
+      message,
+    });
+
+    const msgs = [...messages];
+    msgs.push({ fromSelf: true, message });
+    setMessages(msgs);
   }
 
   return (
@@ -37,6 +48,8 @@ function ChatContent(props: IChatContentProps) {
         hideEmojiPicker={hideEmojiPicker} 
         currentChat={currentChat}
         currentUser={currentUser}
+        setMessages={setMessages}
+        messages={messages}
       />
       <ChatFooter 
         handleSendMessage={handleSendMessage}

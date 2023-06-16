@@ -4,7 +4,7 @@ import { Socket, io } from 'socket.io-client';
 import axios from 'axios';
 import { IUser } from '../interfaces';
 import { pageAnimation } from '../animations';
-import { ApiRoutes, PagesRoutes, App } from '../constants';
+import { ApiRoutes, PagesRoutes, ChatEvent, App } from '../constants';
 import { Contacts, Welcome, ChatContent } from '../layouts';
 import { ChatContainer } from '../components';
 
@@ -27,6 +27,7 @@ function Chat() {
   useEffect(() => {
     if (currentUser) {
       socket.current = io(ApiRoutes.HOST);
+      socket.current.emit(ChatEvent.ADD_USER, currentUser.id);
 
       if (currentUser.isAvatarImageSet) {
         getAllContacts();
@@ -63,6 +64,7 @@ function Chat() {
         <ChatContent 
           currentChat={currentChat} 
           currentUser={currentUser}
+          socket={socket}
         />
       )}
     </ChatContainer>

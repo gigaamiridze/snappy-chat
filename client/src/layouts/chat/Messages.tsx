@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
 import { NoMessage } from '../../assets';
 import { ApiRoutes } from '../../constants';
-import { IMessagesProps, IMessage } from '../../interfaces';
+import { IMessagesProps } from '../../interfaces';
 import { MessagesContainer, MessageWrapper, Message, NoMessagesContent } from '../../components';
 
 function Messages(props: IMessagesProps) {
-  const [messages, setMessages] = useState<IMessage[]>([]);
-  const { hideEmojiPicker, currentChat, currentUser } = props;
+  const { hideEmojiPicker, currentChat, currentUser, setMessages, messages } = props;
 
   useEffect(() => {
     getAllMessage();

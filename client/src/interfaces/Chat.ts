@@ -1,3 +1,4 @@
+import { Socket } from 'socket.io-client';
 import { IUser } from './User';
 
 export interface IWelcomeProps {
@@ -7,6 +8,7 @@ export interface IWelcomeProps {
 export interface IChatContentProps {
   currentChat: IUser | undefined;
   currentUser: IUser | undefined;
+  socket: React.MutableRefObject<Socket | null>;
 }
 
 export interface IChatHeaderProps {
