@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { NoUsers } from '../../assets';
 import { isEmptyOrSpaces } from '../../utils';
+import { NoUsers, NoUser } from '../../assets';
 import { IContactsProps, IUser } from '../../interfaces';
 import { Brand, ShowContacts } from '../../layouts';
 import {
-  ContactsContainer, ContactsBlock, ContactsWrapper, AvatarImg, 
-  CurrentUser, Username, NoUsersContent, SearchInput 
+  ContactsContainer, ContactsBlock, AvatarImg,
+  CurrentUser, Username, NotFoundWrapper, SearchInput
 } from '../../components';
 
 function Contacts(props: IContactsProps) {
@@ -39,30 +39,33 @@ function Contacts(props: IContactsProps) {
       <Brand isAuthContent={false} />
       {contacts.length > 0 ? (
         <ContactsBlock>
-          <SearchInput 
+          <SearchInput
             type='text'
             placeholder='Search contacts'
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             autoComplete='off'
           />
-          <ContactsWrapper>
-            {isEmptyOrSpaces(searchInput) ? (
-              <ShowContacts contacts={contacts} changeChat={changeChat} />
-            ) : filteredContacts.length > 0 ? (
-              <ShowContacts contacts={filteredContacts} changeChat={changeChat} />
-            ) : (
-              <div>No contacts found</div>
-            )}
-          </ContactsWrapper>
+          {isEmptyOrSpaces(searchInput) ? (
+            <ShowContacts contacts={contacts} changeChat={changeChat} />
+          ) : filteredContacts.length > 0 ? (
+            <ShowContacts contacts={filteredContacts} changeChat={changeChat} />
+          ) : (
+            <NotFoundWrapper>
+              <div>
+                <img src={NoUser} alt='No contact' />
+                <h3>No Contact Found</h3>
+              </div>
+            </NotFoundWrapper>
+          )}
         </ContactsBlock>
       ) : (
-        <NoUsersContent>
+        <NotFoundWrapper>
           <div>
             <img src={NoUsers} alt='No users' />
             <h3>No Users Found</h3>
           </div>
-        </NoUsersContent>
+        </NotFoundWrapper>
       )}
       {currentUsername && currentUserImage && (
         <CurrentUser>

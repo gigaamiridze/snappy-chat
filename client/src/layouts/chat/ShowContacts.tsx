@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { DefaultAvatar } from '../../assets';
 import { IShowContactsProps, IUser } from '../../interfaces';
-import { Contact, AvatarImg, Username } from '../../components';
+import { ContactsWrapper, Contact, AvatarImg, Username } from '../../components';
 
 function ShowContacts(props: IShowContactsProps) {
   const [selectedContact, setSelectedContact] = useState<string | undefined>(undefined);
@@ -13,7 +13,7 @@ function ShowContacts(props: IShowContactsProps) {
   }
 
   return (
-    <>
+    <ContactsWrapper>
       {contacts.map(contact => {
         const { id, username, avatarImage, isAvatarImageSet } = contact;
 
@@ -36,7 +36,7 @@ function ShowContacts(props: IShowContactsProps) {
           </Contact>
         )
       })}
-    </>
+    </ContactsWrapper>
   )
 }
 

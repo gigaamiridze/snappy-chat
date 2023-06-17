@@ -27,6 +27,7 @@ export const ChatInput = styled(Input)`
 
 export const SearchInput = styled(Input)`
   background-color: ${({ theme }) => theme.colors.transparentWhite};
-  height: 35px;
+  min-height: 35px;
   border-radius: 32px;
+  padding-right: 18px;
 `;

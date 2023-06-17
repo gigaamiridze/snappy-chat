@@ -1,6 +1,26 @@
 import styled, { css } from 'styled-components';
 
-const EmojiWrapper = styled.div`
+export const NotFoundWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+
+  h3 {
+    color: ${({ theme }) => theme.colors.white};
+    font-size: 18px;
+    font-weight: 700;
+  }
+`;
+
+export const EmojiWrapper = styled.div`
   position: relative;
 
   svg {
@@ -59,5 +79,3 @@ const EmojiWrapper = styled.div`
     }
   }
 `;
-
-export default EmojiWrapper;

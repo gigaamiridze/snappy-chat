@@ -19,22 +19,3 @@ export const Username = styled.h3`
   font-size: 18px;
   font-weight: 700;
 `;
-
-export const NoUsersContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  div {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    row-gap: 20px;
-  }
-
-  h3 {
-    color: ${({ theme }) => theme.colors.white};
-    font-size: 18px;
-    font-weight: 700;
-  }
-`;
