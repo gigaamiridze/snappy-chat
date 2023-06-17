@@ -12,7 +12,8 @@ function Contacts(props: IContactsProps) {
   const [currentUsername, setCurrentUsername] = useState<string | undefined>(undefined);
   const [currentUserImage, setCurrentUserImage] = useState<string | undefined>(undefined);
   const [selectedContact, setSelectedContact] = useState<string | undefined>(undefined);
-  const [search, setSearch] = useState<string>('');
+  const [filteredContacts, setFilteredContacts] = useState<IUser[]>([]);
+  const [searchInput, setSearchInput] = useState<string>('');
 
   useEffect(() => {
     if (currentUser) {
@@ -20,6 +21,18 @@ function Contacts(props: IContactsProps) {
       setCurrentUserImage(currentUser.avatarImage);
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    const re = RegExp(
+      `.*${searchInput.toLowerCase().replace(/\s+/g, '').split('').join('.*')}.*`
+    );
+
+    const searchResults = contacts.filter((contact) => {
+      return contact.username.toLowerCase().match(re);
+    });
+
+    setFilteredContacts(searchResults);
+  }, [searchInput]);
 
   const changeCurrentChat = (id: string, contact: IUser) => {
     setSelectedContact(id);
@@ -34,8 +47,8 @@ function Contacts(props: IContactsProps) {
           <SearchInput 
             type='text'
             placeholder='Search contacts'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
             autoComplete='off'
           />
           <ContactsWrapper>
