@@ -28,6 +28,24 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.mediumPurple};
     cursor: not-allowed;
   }
+
+  @media (max-width: 768px) {
+    height: 48px;
+  }
+
+  @media (max-width: 480px) {
+    height: 45px;
+    font-size: 15.5px;
+  }
+
+  @media (max-width: 375px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 320px) {
+    height: 43px;
+    font-size: 14.5px;
+  }
 `;
 
 export const AuthButton = styled(Button)`

@@ -8,6 +8,30 @@ export const AuthContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+
+  @media (max-width: 768px) {
+    padding: 40px 60px;
+    row-gap: 27px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 35px 45px;
+    row-gap: 25px;
+  }
+
+  @media (max-width: 440px) {
+    width: 100%;
+  }
+
+  @media (max-width: 375px) {
+    padding: 30px;
+    row-gap: 22px;
+  }
+
+  @media (max-width: 320px) {
+    padding: 20px;
+    row-gap: 20px;
+  }
 `;
 
 export const AuthForm = styled.form`
@@ -15,6 +39,24 @@ export const AuthForm = styled.form`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+
+  @media (max-width: 768px) {
+    row-gap: 27px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 300px;
+    width: 100%;
+    row-gap: 25px;
+  }
+
+  @media (max-width: 375px) {
+    row-gap: 22px;
+  }
+
+  @media (max-width: 320px) {
+    row-gap: 20px;
+  }
 `;
 
 export const AuthInput = styled.input`
@@ -38,5 +80,18 @@ export const AuthInput = styled.input`
   
   &:focus {
     border-color: ${({ theme }) => theme.colors.mediumPurple};
+  }
+
+  @media (max-width: 768px) {
+    height: 48px;
+  }
+
+  @media (max-width: 480px) {
+    height: 45px;
+  }
+
+  @media (max-width: 320px) {
+    height: 43px;
+    font-size: 15.5px;
   }
 `;
