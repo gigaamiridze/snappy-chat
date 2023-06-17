@@ -12,6 +12,7 @@ function Contacts(props: IContactsProps) {
   const [currentUsername, setCurrentUsername] = useState<string | undefined>(undefined);
   const [currentUserImage, setCurrentUserImage] = useState<string | undefined>(undefined);
   const [selectedContact, setSelectedContact] = useState<string | undefined>(undefined);
+  const [search, setSearch] = useState<string>('');
 
   useEffect(() => {
     if (currentUser) {
@@ -33,6 +34,8 @@ function Contacts(props: IContactsProps) {
           <SearchInput 
             type='text'
             placeholder='Search contacts'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             autoComplete='off'
           />
           <ContactsWrapper>
