@@ -9,3 +9,8 @@ export interface IContactsProps {
 export interface IContactProps {
   isSelectedContact: boolean;
 }
+
+export interface IShowContactsProps {
+  contacts: IUser[];
+  changeChat: (chat: IUser) => void;
+}

@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import { DefaultAvatar, NoUsers } from '../../assets';
+import { NoUsers } from '../../assets';
+import { isEmptyOrSpaces } from '../../utils';
 import { IContactsProps, IUser } from '../../interfaces';
-import { Brand } from '../../layouts';
+import { Brand, ShowContacts } from '../../layouts';
 import {
-  ContactsContainer, ContactsBlock, ContactsWrapper, Contact, 
-  AvatarImg, CurrentUser, Username, NoUsersContent, SearchInput 
+  ContactsContainer, ContactsBlock, ContactsWrapper, AvatarImg, 
+  CurrentUser, Username, NoUsersContent, SearchInput 
 } from '../../components';
 
 function Contacts(props: IContactsProps) {
   const { contacts, currentUser, changeChat } = props;
   const [currentUsername, setCurrentUsername] = useState<string | undefined>(undefined);
   const [currentUserImage, setCurrentUserImage] = useState<string | undefined>(undefined);
-  const [selectedContact, setSelectedContact] = useState<string | undefined>(undefined);
   const [filteredContacts, setFilteredContacts] = useState<IUser[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
 
@@ -34,11 +34,6 @@ function Contacts(props: IContactsProps) {
     setFilteredContacts(searchResults);
   }, [searchInput]);
 
-  const changeCurrentChat = (id: string, contact: IUser) => {
-    setSelectedContact(id);
-    changeChat(contact);
-  }
-
   return (
     <ContactsContainer>
       <Brand isAuthContent={false} />
@@ -52,28 +47,13 @@ function Contacts(props: IContactsProps) {
             autoComplete='off'
           />
           <ContactsWrapper>
-            {contacts.map(contact => {
-              const { id, username, avatarImage, isAvatarImageSet } = contact;
-
-              return (
-                <Contact
-                  key={id}
-                  isSelectedContact={selectedContact === id ? true : false}
-                  onClick={() => changeCurrentChat(id, contact)}
-                >
-                  <AvatarImg
-                    src={
-                      isAvatarImageSet
-                        ? `data:image/svg+xml;base64,${avatarImage}`
-                        : DefaultAvatar
-                    }
-                    isChatContent={true}
-                    alt={`${username}'s avatar`}
-                  />
-                  <Username>{username}</Username>
-                </Contact>
-              )
-            })}
+            {isEmptyOrSpaces(searchInput) ? (
+              <ShowContacts contacts={contacts} changeChat={changeChat} />
+            ) : filteredContacts.length > 0 ? (
+              <ShowContacts contacts={filteredContacts} changeChat={changeChat} />
+            ) : (
+              <div>No contacts found</div>
+            )}
           </ContactsWrapper>
         </ContactsBlock>
       ) : (
