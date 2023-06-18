@@ -40,23 +40,15 @@ export const AuthForm = styled.form`
   flex-direction: column;
   row-gap: 30px;
 
-  @media (max-width: 768px) {
-    row-gap: 27px;
-  }
-
   @media (max-width: 480px) {
     max-width: 300px;
     width: 100%;
     row-gap: 25px;
   }
-
-  @media (max-width: 375px) {
-    row-gap: 22px;
-  }
-
-  @media (max-width: 320px) {
-    row-gap: 20px;
-  }
+  
+  @media (max-width: 768px) { row-gap: 27px; }
+  @media (max-width: 375px) { row-gap: 22px; }
+  @media (max-width: 320px) { row-gap: 20px; }
 `;
 
 export const AuthInput = styled.input`
@@ -69,7 +61,7 @@ export const AuthInput = styled.input`
   width: 100%;
   height: 50px;
   background-color: transparent;
-  font-size: 16px;
+  font-size: clamp(15.5px, 4vw, 16px);
   border-radius: 6px;
   padding: 0 16px;
   outline: none;
@@ -82,16 +74,7 @@ export const AuthInput = styled.input`
     border-color: ${({ theme }) => theme.colors.mediumPurple};
   }
 
-  @media (max-width: 768px) {
-    height: 48px;
-  }
-
-  @media (max-width: 480px) {
-    height: 45px;
-  }
-
-  @media (max-width: 320px) {
-    height: 43px;
-    font-size: 15.5px;
-  }
+  @media (max-width: 768px) { height: 48px; }
+  @media (max-width: 480px) { height: 45px; }
+  @media (max-width: 320px) { height: 43px; }
 `;

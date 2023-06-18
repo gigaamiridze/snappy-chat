@@ -8,7 +8,7 @@ const Button = styled.button`
     transition: ${theme.transition};
   `}
   height: 50px;
-  font-size: 16px;
+  font-size: clamp(14.5px, 3.3vw, 16px);
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 6px;
@@ -18,7 +18,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 15px;
+  column-gap: 15px; 
   
   &:hover {
     background-color: ${({ theme }) => theme.colors.mediumPurple};
@@ -28,24 +28,10 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.mediumPurple};
     cursor: not-allowed;
   }
-
-  @media (max-width: 768px) {
-    height: 48px;
-  }
-
-  @media (max-width: 480px) {
-    height: 45px;
-    font-size: 15.5px;
-  }
-
-  @media (max-width: 375px) {
-    font-size: 15px;
-  }
-
-  @media (max-width: 320px) {
-    height: 43px;
-    font-size: 14.5px;
-  }
+  
+  @media (max-width: 768px) { height: 48px; }
+  @media (max-width: 480px) { height: 45px; }
+  @media (max-width: 320px) { height: 43px; }
 `;
 
 export const AuthButton = styled(Button)`
