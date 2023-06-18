@@ -17,6 +17,8 @@ export const MessagesContainer = styled.div`
     width: 1.5px;
     border-radius: 16px;
   }
+
+  @media (max-width: 850px) { padding: 16px 20px; };
 `;
 
 export const MessageWrapper = styled.div<IMessageType>`
@@ -35,6 +37,11 @@ export const Message = styled.p<IMessageType>`
   font-size: 16px;
   border-radius: 16px;
   overflow-wrap: break-word;
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    font-size: 15.5px;
+  }
 `;
 
 export const NoMessagesContent = styled.div`
@@ -44,12 +51,25 @@ export const NoMessagesContent = styled.div`
   justify-content: center;
   row-gap: 30px;
 
+  @media (max-width: 850px) { padding: 0 20px; };
+
   img {
     width: 145px;
+
+    @media (max-width: 930px) { width: 135px; };
+    @media (max-width: 850px) { width: 125px; };
+    @media (max-width: 768px) { width: 110px; };
   }
 
   p {
     color: ${({ theme }) => theme.colors.white};
     font-size: 18px;
+
+    @media (max-width: 850px) {
+      text-align: center;
+      line-height: 22px;
+    }
+
+    @media (max-width: 768px) { font-size: 17px; };
   }
 `;

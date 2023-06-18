@@ -14,6 +14,9 @@ export const Contact = styled.div<IContactProps>`
   align-items: center;
   column-gap: 16px;
   cursor: pointer;
+
+  @media (max-width: 850px) { padding: 6px 12px; };
+  @media (max-width: 768px) { min-height: 65px; }
 `;
 
 export const ContactsBlock = styled.div`

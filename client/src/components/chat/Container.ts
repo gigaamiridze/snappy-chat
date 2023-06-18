@@ -11,6 +11,10 @@ export const ChatContainer = styled(motion.div)`
   display: grid;
   grid-template-columns: 25% 75%;
   border-radius: 32px;
+
+  @media (max-width: 1080px) { grid-template-columns: 30% 70%; }
+  @media (max-width: 930px) { grid-template-columns: 35% 65%; }
+  @media (max-width: 768px) { grid-template-columns: 38% 62%; }
 `;
 
 export const ChatContentContainer = styled(motion.div)`
@@ -39,11 +43,17 @@ export const WelcomeContainer = styled.div`
 
   img {
     height: 320px;
+
+    @media (max-width: 930px) { height: 300px; };
+    @media (max-width: 850px) { height: 280px; };
+    @media (max-width: 768px) { height: 260px; };
   }
 
   h1 {
     font-size: 22px;
     margin-bottom: 5px;
+
+    @media (max-width: 768px) { font-size: 21px; };
 
     span {
       color: ${({ theme }) => theme.colors.hanPurple};

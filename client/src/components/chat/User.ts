@@ -18,4 +18,6 @@ export const Username = styled.h3`
   color: ${({ theme }) => theme.colors.white};
   font-size: 18px;
   font-weight: 700;
+
+  @media (max-width: 768px) { font-size: 17px; };
 `;

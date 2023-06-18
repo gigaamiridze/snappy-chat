@@ -26,7 +26,11 @@ export const ChatButton = styled(Button)`
   padding: 10px 18px;
   border-radius: 32px;
 
+  @media (max-width: 850px) { padding: 8px 18px; };
+
   svg {
     font-size: 22px;
+
+    @media (max-width: 768px) { font-size: 20px; };
   }
 `;

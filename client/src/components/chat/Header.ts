@@ -5,6 +5,8 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 850px) { padding: 0 20px; };
 `;
 
 export default Header;

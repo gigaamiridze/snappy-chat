@@ -13,10 +13,16 @@ export const NotFoundWrapper = styled.div`
     row-gap: 20px;
   }
 
+  img {
+    @media (max-width: 768px) { height: 60px; };
+  }
+
   h3 {
     color: ${({ theme }) => theme.colors.white};
     font-size: 18px;
     font-weight: 700;
+
+    @media (max-width: 768px) { font-size: 17px; };
   }
 `;
 

@@ -19,6 +19,9 @@ const Input = styled.input`
   outline: none;
   padding-left: 18px;
   font-size: 17px;
+
+  @media (max-width: 850px) { font-size: 16.5px; };
+  @media (max-width: 768px) { font-size: 16px; };
 `;
 
 export const ChatInput = styled(Input)`

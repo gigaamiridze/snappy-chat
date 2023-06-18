@@ -8,6 +8,10 @@ const ChatName = styled.h1<IBrandProps>`
   `}
   font-weight: 700;
   text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: ${({ isAuthContent }) => isAuthContent ? null : '16.5px'};
+  }
 `;
 
 export default ChatName;
