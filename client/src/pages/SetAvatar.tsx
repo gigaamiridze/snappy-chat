@@ -8,7 +8,10 @@ import { IUser } from '../interfaces';
 import { getRandomNumber } from '../utils';
 import { pageAnimation } from '../animations';
 import { ApiRoutes, PagesRoutes, AvatarApi, App } from '../constants';
-import { SetAvatarContainer, PickAvatarTitle, Avatars, AvatarWrapper, AvatarImg, AvatarButton } from '../components';
+import { 
+  SetAvatarContainer, PickAvatarTitle, Avatars, 
+  AvatarWrapper, AvatarImg, AvatarButton, AvatarLoader 
+} from '../components';
 
 function SetAvatar() {
   const [avatars, setAvatars] = useState<string[]>([]);
@@ -17,9 +20,9 @@ function SetAvatar() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // if (!localStorage.getItem(App.SNAPPY_CHAT_USER)) {
-    //   navigate(PagesRoutes.LOGIN);
-    // }
+    if (!localStorage.getItem(App.SNAPPY_CHAT_USER)) {
+      navigate(PagesRoutes.LOGIN);
+    }
     getAvatars();
   }, []);
   
@@ -65,7 +68,7 @@ function SetAvatar() {
   return (
     <>
       {isLoading ? (
-        <img src={Loader} alt='loader' />
+        <AvatarLoader src={Loader} alt='loader' />
       ) : (
         <SetAvatarContainer
           variants={pageAnimation}

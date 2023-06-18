@@ -53,5 +53,8 @@ export const AuthButton = styled(Button)`
 `;
 
 export const AvatarButton = styled(Button)`
-  width: 270px;
+  padding: 0 30px;
+  
+  @media (max-width: 480px) { padding: 0 25px; }
+  @media (max-width: 320px) { padding: 0 20px; }
 `;

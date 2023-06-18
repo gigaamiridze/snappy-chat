@@ -78,7 +78,7 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
     justify-content: center;
 
-    @media (max-width: 440px) { padding: 0 25px; }
+    @media (max-width: 480px) { padding: 0 25px; }
     @media (max-width: 375px) { padding: 0 20px; }
     @media (max-width: 320px) { padding: 0 15px; }
   }
