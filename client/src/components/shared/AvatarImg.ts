@@ -8,8 +8,12 @@ const AvatarImg = styled.img<IAvatarImgProps>`
     height: ${({ isChatContent }) => isChatContent ? '46px' : '85px'};
   }
 
+  @media (max-width: 480px) {
+    height: ${({ isChatContent }) => isChatContent ? '44px' : null};
+  }
+
   @media (max-width: 420px) {
-    height: ${({ isChatContent }) => isChatContent ? null : '80px'};
+    height: ${({ isChatContent }) => isChatContent ? '42px' : '80px'};
   }
 
   @media (max-width: 375px) {
@@ -17,7 +21,7 @@ const AvatarImg = styled.img<IAvatarImgProps>`
   }
 
   @media (max-width: 320px) {
-    height: ${({ isChatContent }) => isChatContent ? null : '72px'};
+    height: ${({ isChatContent }) => isChatContent ? '40px' : '72px'};
   }
 `;
 

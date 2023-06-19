@@ -11,8 +11,8 @@ export const usernameValidation = {
     message: 'Username must be at least 4 characters long',
   },
   maxLength: {
-    value: 20,
-    message: 'Username must be no more than 20 characters',
+    value: 15,
+    message: 'Username must be no more than 15 characters',
   }
 }
 

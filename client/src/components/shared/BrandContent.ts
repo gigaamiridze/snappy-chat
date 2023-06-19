@@ -8,15 +8,15 @@ const BrandContent = styled.div<IBrandProps>`
   column-gap: ${({ isAuthContent }) => isAuthContent ? '24px' : '16px'};
 
   @media (max-width: 768px) {
-    column-gap: ${({ isAuthContent }) => isAuthContent ? '20px' : '16px'};
+    column-gap: ${({ isAuthContent }) => isAuthContent ? '20px' : '14px'};
   }
 
   @media (max-width: 480px) {
-    column-gap: ${({ isAuthContent }) => isAuthContent ? '18px' : '16px'};
+    column-gap: ${({ isAuthContent }) => isAuthContent ? '18px' : null};
   }
 
   @media (max-width: 375px) {
-    column-gap: ${({ isAuthContent }) => isAuthContent ? '15px' : '16px'};
+    column-gap: ${({ isAuthContent }) => isAuthContent ? '15px' : '10px'};
   }
 `;
 

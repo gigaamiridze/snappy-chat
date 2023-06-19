@@ -5,24 +5,33 @@ export const NotFoundWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @media (max-width: 700px) {
+    grid-area: 1 / 2 / 3 / auto;
+  }
 
   div {
     display: flex;
     align-items: center;
     flex-direction: column;
     row-gap: 20px;
+
+    @media (max-width: 700px) { row-gap: 15px; }
+    @media (max-width: 320px) { row-gap: 12px; }
   }
 
   img {
-    @media (max-width: 768px) { height: 60px; };
+    @media (max-width: 768px) { height: 60px; }
+    @media (max-width: 700px) { height: 55px; }
+    @media (max-width: 480px) { height: 50px; }
+    @media (max-width: 375px) { height: 45px; }
+    @media (max-width: 320px) { height: 40px; }
   }
 
   h3 {
     color: ${({ theme }) => theme.colors.white};
-    font-size: 18px;
+    font-size: clamp(14px, 4vw, 18px);
     font-weight: 700;
-
-    @media (max-width: 768px) { font-size: 17px; };
   }
 `;
 
@@ -31,7 +40,7 @@ export const EmojiWrapper = styled.div`
 
   svg {
     color: ${({ theme }) => theme.colors.yellow};
-    font-size: 26px;
+    font-size: clamp(23px, 5vw, 26px);
     cursor: pointer;
   }
 

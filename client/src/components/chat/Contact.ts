@@ -15,8 +15,19 @@ export const Contact = styled.div<IContactProps>`
   column-gap: 16px;
   cursor: pointer;
 
-  @media (max-width: 850px) { padding: 6px 12px; };
+  @media (max-width: 850px) { padding: 6px 12px; }
   @media (max-width: 768px) { min-height: 65px; }
+  
+  @media (max-width: 480px) { 
+    min-height: 60px;
+    column-gap: 14px;
+  }
+
+  @media (max-width: 375px) {
+    min-height: 55px;
+    column-gap: 10px;
+    padding: 6px 10px;
+  }
 `;
 
 export const ContactsBlock = styled.div`
@@ -24,10 +35,29 @@ export const ContactsBlock = styled.div`
   align-items: center;
   flex-direction: column;
   row-gap: 13px;
+
+  @media (max-width: 700px) {
+    grid-area: 1 / 2 / 3 / auto;
+    padding: 13px 0;
+  }
+
+  @media (max-width: 480px) {
+    row-gap: 11px;
+    padding: 11px 0;
+  }
+
+  @media (max-width: 375px) {
+    row-gap: 10px;
+    padding: 10px 0;
+  }
 `;
 
-export const ContactsWrapper = styled(ContactsBlock)`
+export const ContactsWrapper = styled.div`
   width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 13px;
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -39,4 +69,7 @@ export const ContactsWrapper = styled(ContactsBlock)`
     width: 1.5px;
     border-radius: 16px;
   }
+
+  @media (max-width: 480px) { row-gap: 11px; }
+  @media (max-width: 375px) { row-gap: 10px; }
 `;

@@ -7,6 +7,8 @@ export const ChatForm = styled.form`
   display: flex;
   align-items: center;
   column-gap: 18px;
+
+  @media (max-width: 375px) { column-gap: 15px; }
 `;
 
 const Input = styled.input`
@@ -18,10 +20,11 @@ const Input = styled.input`
   border: none;
   outline: none;
   padding-left: 18px;
-  font-size: 17px;
+  font-size: clamp(15px, 4vw, 17px);
 
-  @media (max-width: 850px) { font-size: 16.5px; };
-  @media (max-width: 768px) { font-size: 16px; };
+  @media (max-width: 375px) { 
+    padding-left: 15px;
+  }
 `;
 
 export const ChatInput = styled(Input)`
@@ -33,4 +36,11 @@ export const SearchInput = styled(Input)`
   min-height: 35px;
   border-radius: 32px;
   padding-right: 18px;
+
+  @media (max-width: 480px) { min-height: 33px; }
+
+  @media (max-width: 375px) { 
+    padding-right: 15px;
+    min-height: 32px;
+  }
 `;

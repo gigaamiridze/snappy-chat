@@ -5,19 +5,22 @@ export const CurrentUser = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  column-gap: 16px;
+
+  @media (max-width: 480px) { column-gap: 14px; }
+  @media (max-width: 375px) { column-gap: 10px; }
 `;
 
 export const UserDetails = styled.div`
   display: flex;
   align-items: center;
   column-gap: 15px;
+
+  @media (max-width: 375px) { column-gap: 12px; }
 `;
 
 export const Username = styled.h3`
   color: ${({ theme }) => theme.colors.white};
-  font-size: 18px;
+  font-size: clamp(15.5px, 4.2vw, 18px);
   font-weight: 700;
-
-  @media (max-width: 768px) { font-size: 17px; };
 `;

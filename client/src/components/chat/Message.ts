@@ -5,7 +5,7 @@ export const MessagesContainer = styled.div`
   padding: 16px 25px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  row-gap: 16px;
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -18,7 +18,14 @@ export const MessagesContainer = styled.div`
     border-radius: 16px;
   }
 
-  @media (max-width: 850px) { padding: 16px 20px; };
+  @media (max-width: 850px) { padding: 16px 20px; }
+
+  @media (max-width: 480px) { 
+    padding: 16px;
+    row-gap: 14px;
+  }
+
+  @media (max-width: 320px) { padding: 12px; }
 `;
 
 export const MessageWrapper = styled.div<IMessageType>`
@@ -34,14 +41,13 @@ export const Message = styled.p<IMessageType>`
   `}
   max-width: 40%;
   padding: 16px;
-  font-size: 16px;
+  font-size: clamp(14.5px, 4vw, 16px);
   border-radius: 16px;
   overflow-wrap: break-word;
-
-  @media (max-width: 768px) {
-    padding: 15px;
-    font-size: 15.5px;
-  }
+  
+  @media (max-width: 768px) { padding: 15px; }
+  @media (max-width: 480px) { padding: 14px; }
+  @media (max-width: 320px) { padding: 13px; }
 `;
 
 export const NoMessagesContent = styled.div`
@@ -51,25 +57,29 @@ export const NoMessagesContent = styled.div`
   justify-content: center;
   row-gap: 30px;
 
-  @media (max-width: 850px) { padding: 0 20px; };
+  @media (max-width: 850px) { padding: 0 20px; }
+  @media (max-width: 700px) { row-gap: 25px; }
+  @media (max-width: 375px) { row-gap: 20px; }
+  @media (max-width: 320px) { padding: 0 12px; }
 
   img {
     width: 145px;
 
-    @media (max-width: 930px) { width: 135px; };
-    @media (max-width: 850px) { width: 125px; };
-    @media (max-width: 768px) { width: 110px; };
+    @media (max-width: 930px) { width: 135px; }
+    @media (max-width: 850px) { width: 125px; }
+    @media (max-width: 768px) { width: 110px; }
+    @media (max-width: 700px) { width: 100px; }
+    @media (max-width: 480px) { width: 90px; }
+    @media (max-width: 375px) { width: 80px; }
   }
 
   p {
     color: ${({ theme }) => theme.colors.white};
-    font-size: 18px;
+    font-size: clamp(15.5px, 4vw, 18px);
 
     @media (max-width: 850px) {
       text-align: center;
       line-height: 22px;
     }
-
-    @media (max-width: 768px) { font-size: 17px; };
   }
 `;
