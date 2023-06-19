@@ -53,9 +53,29 @@ export const EmojiWrapper = styled.div`
     position: absolute !important;
     top: -256px;
 
+    @media (max-width: 720px) {
+      width: 240px !important;
+      height: 220px !important;
+      top: -224px;
+    }
+
+    @media (max-width: 480px) {
+      width: 220px !important;
+      height: 200px !important;
+      top: -204px;
+    }
+
     .epr-search {
       background-color: transparent !important;
       border-color: ${({ theme }) => theme.colors.mediumPurple} !important;
+    }
+
+    .epr-emoji-img {
+      @media (max-width: 480px) {
+        &:hover {
+          background-color: transparent !important;
+        }
+      }
     }
 
     input {
@@ -63,6 +83,10 @@ export const EmojiWrapper = styled.div`
         font-family: ${theme.fonts.primary};
         color: ${theme.colors.white} !important;
       `}
+
+      @media (max-width: 480px) {
+        height: 35px !important;
+      }
     }
 
     .epr-header-overlay {
@@ -71,6 +95,12 @@ export const EmojiWrapper = styled.div`
 
     .epr-category-nav {
       padding: 0 10px 10px;
+    }
+
+    .epr-emoji-img {
+      @media (max-width: 480px) {
+        max-height: 35px !important;
+      }
     }
 
     .epr-body::-webkit-scrollbar {
@@ -87,6 +117,12 @@ export const EmojiWrapper = styled.div`
       font-family: ${({ theme }) => theme.fonts.primary};
       font-size: 14px;
       height: 30px !important;
+    }
+
+    .epr-emoji-category-content {
+      @media (max-width: 480px) {
+        grid-template-columns: repeat(auto-fill, 33px) !important;
+      }
     }
 
     .epr-preview {
