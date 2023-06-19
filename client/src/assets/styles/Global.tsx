@@ -82,6 +82,25 @@ const GlobalStyles = createGlobalStyle`
     @media (max-width: 375px) { padding: 0 20px; }
     @media (max-width: 320px) { padding: 0 15px; }
   }
+
+  .Toastify__toast-container {
+    @media (max-width: 768px) { 
+      width: 280px !important; 
+    }
+
+    @media (max-width: 480px) {
+      left: inherit;
+      right: 0;
+    }
+
+    @media (max-width: 375px) {
+      width: 260px !important;
+    }
+
+    @media (max-width: 320px) {
+      width: 100% !important;
+    }
+  }
 `;
 
 export default GlobalStyles;
