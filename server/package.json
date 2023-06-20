@@ -17,6 +17,9 @@
   ],
   "author": "justtfelix",
   "license": "ISC",
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
