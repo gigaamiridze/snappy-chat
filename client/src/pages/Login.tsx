@@ -13,7 +13,7 @@ import { Brand, AccountQuestion } from '../layouts';
 
 function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm<ILoginFormFields>();
-  const [buttonText, setButtonText] = useState<string>('register');
+  const [buttonText, setButtonText] = useState<string>('login');
   const [disabled, setDisabled] = useState<boolean>(false);
   const navigate = useNavigate();
 
