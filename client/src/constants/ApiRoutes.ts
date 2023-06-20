@@ -1,5 +1,5 @@
 export enum ApiRoutes {
-  HOST = 'http://localhost:5000',
+  HOST = 'https://snappy-chat-snas.onrender.com',
   REGISTER = `${HOST}/api/auth/register`,
   LOGIN = `${HOST}/api/auth/login`,
   SET_AVATAR = `${HOST}/api/auth/set-avatar`,
