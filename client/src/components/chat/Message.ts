@@ -40,14 +40,18 @@ export const Message = styled.p<IMessageType>`
     background-color: ${isSended ? theme.colors.ceanBlue : theme.colors.darkPurple};
   `}
   max-width: 40%;
-  padding: 16px;
+  padding: 15px;
   font-size: clamp(14.5px, 4vw, 16px);
+  line-height: 22px;
   border-radius: 16px;
   overflow-wrap: break-word;
   
-  @media (max-width: 768px) { padding: 15px; }
   @media (max-width: 480px) { padding: 14px; }
-  @media (max-width: 320px) { padding: 13px; }
+  
+  @media (max-width: 375px) { 
+    padding: 13px;
+    line-height: 21px; 
+  }
 `;
 
 export const NoMessagesContent = styled.div`

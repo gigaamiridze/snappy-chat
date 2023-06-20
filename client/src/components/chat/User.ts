@@ -7,8 +7,12 @@ export const CurrentUser = styled.div`
   justify-content: center;
   column-gap: 16px;
 
-  @media (max-width: 480px) { column-gap: 14px; }
-  @media (max-width: 375px) { column-gap: 10px; }
+  @media (max-width: 480px) { 
+    flex-direction: column;
+    gap: 12px 0px;
+  }
+
+  @media (max-width: 375px) { row-gap: 10px; }
 `;
 
 export const UserDetails = styled.div`
